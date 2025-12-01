@@ -42,7 +42,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-[#050505] to-[#0f0f0f] overflow-hidden"
+      className="relative min-h-[calc(100vh-5rem)] flex flex-col items-center justify-center bg-gradient-to-b from-[#050505] to-[#0f0f0f] overflow-hidden"
     >
       {/* Grid Pattern Overlay - Small Squares - Full Coverage Including Navbar Area */}
       <div
@@ -75,18 +75,18 @@ export default function Hero() {
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#ddfe00] opacity-[0.08] blur-[120px] rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
 
       {/* Content Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 lg:pt-16 pb-20 sm:pb-28 lg:pb-36 w-full">
-        <div className="text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-28 w-full flex flex-col items-center justify-center min-h-[calc(100vh-5rem)]">
+        <div className="text-center w-full flex flex-col items-center">
           {/* Half Arc Above Badge */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.8 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="relative mb-2 flex justify-center items-center"
+            className="relative mb-0 flex justify-center items-center"
           >
             {/* Semi-Circular Arc */}
             <svg
-              className="w-full max-w-[800px] h-[220px] sm:max-w-[1000px] sm:h-[280px] lg:max-w-[1200px]"
+              className="w-full max-w-[600px] h-[60px] sm:max-w-[700px] sm:h-[80px] lg:max-w-[800px] lg:h-[100px]"
               viewBox="0 0 1000 220"
               preserveAspectRatio="xMidYMin meet"
             >
@@ -129,13 +129,13 @@ export default function Hero() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center justify-center mb-6"
+            className="inline-flex items-center justify-center mb-2"
           >
-            <div className="relative px-6 py-2.5 rounded-full border border-[#ddfe00]/50 bg-[#ddfe00]/5 backdrop-blur-sm">
+            <div className="relative px-4 py-1.5 rounded-full border border-[#ddfe00]/50 bg-[#ddfe00]/5 backdrop-blur-sm">
               {/* Glow effect */}
               <div className="absolute inset-0 rounded-full bg-[#ddfe00]/20 blur-xl -z-10" />
-              <span className="text-[#ddfe00] text-sm font-semibold tracking-wider uppercase">
-                DigitalAddis
+              <span className="text-[#ddfe00] text-xs font-semibold tracking-wider uppercase">
+                DigitalAddisasdddd
               </span>
             </div>
           </motion.div>
@@ -145,7 +145,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black mb-6 sm:mb-8 leading-[1.1] tracking-tight"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-2 sm:mb-3 leading-[1.1] tracking-tight"
           >
             <span className="text-white">INNOVATING YOUR</span>
             <br />
@@ -159,7 +159,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg sm:text-xl md:text-2xl text-[#cfcfcf] mb-12 sm:mb-16 max-w-3xl mx-auto leading-relaxed font-light"
+            className="text-sm sm:text-base md:text-lg text-[#cfcfcf] mb-4 sm:mb-6 max-w-3xl mx-auto leading-relaxed font-light"
           >
             A full-service digital agency delivering UI/UX design, web development, and branding that makes an impact.
           </motion.p>
@@ -169,11 +169,11 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.9 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="mb-20 sm:mb-24"
+            className="mb-0"
           >
             <Link
               href="/contact"
-              className="group relative inline-flex items-center justify-center px-10 py-5 sm:px-14 sm:py-6 bg-[#ddfe00] text-black font-bold text-lg sm:text-xl rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(221,254,0,0.6)]"
+              className="group relative inline-flex items-center justify-center px-6 py-3 sm:px-10 sm:py-4 bg-[#ddfe00] text-black font-bold text-sm sm:text-base rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(221,254,0,0.6)]"
             >
               {/* Glow effect */}
               <div className="absolute inset-0 rounded-full bg-[#ddfe00] blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300 -z-10" />
@@ -182,7 +182,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Project Cards */}
+        {/* Project Cards - Appears after scrolling */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -201,9 +201,9 @@ export default function Hero() {
               className="group relative"
             >
               {/* Card Container */}
-              <div className="relative h-[400px] sm:h-[450px] lg:h-[500px] rounded-[24px] border border-[#2c2c2c] bg-gradient-to-br from-[#0a0a0a] to-[#050505] overflow-hidden transition-all duration-300 group-hover:border-[#ddfe00]/50 group-hover:shadow-[0_0_30px_rgba(221,254,0,0.2)]">
+              <div className="relative h-[280px] sm:h-[320px] lg:h-[360px] rounded-[20px] border border-[#2c2c2c] bg-gradient-to-br from-[#0a0a0a] to-[#050505] overflow-hidden transition-all duration-300 group-hover:border-[#ddfe00]/50 group-hover:shadow-[0_0_30px_rgba(221,254,0,0.2)]">
                 {/* Neon edge flicker effect (very light) */}
-                <div className="absolute inset-0 rounded-[24px] border border-[#ddfe00]/0 group-hover:border-[#ddfe00]/20 transition-all duration-500" />
+                <div className="absolute inset-0 rounded-[20px] border border-[#ddfe00]/0 group-hover:border-[#ddfe00]/20 transition-all duration-500" />
 
                 {/* Glow on hover */}
                 <div className="absolute inset-0 bg-[#ddfe00]/0 group-hover:bg-[#ddfe00]/5 transition-all duration-300 blur-xl -z-10" />
@@ -222,11 +222,11 @@ export default function Hero() {
                 </div>
 
                 {/* Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[#0a0a0a] to-transparent">
-                  <h3 className="text-white font-bold text-lg mb-2 group-hover:text-[#ddfe00] transition-colors duration-300">
+                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-[#0a0a0a] to-transparent">
+                  <h3 className="text-white font-bold text-base mb-1.5 group-hover:text-[#ddfe00] transition-colors duration-300">
                     {project.title}
                   </h3>
-                  <p className="text-[#8b8b8b] text-sm leading-relaxed group-hover:text-[#cfcfcf] transition-colors duration-300">
+                  <p className="text-[#8b8b8b] text-xs leading-relaxed group-hover:text-[#cfcfcf] transition-colors duration-300">
                     {project.subtitle}
                   </p>
                 </div>
@@ -246,10 +246,10 @@ export default function Hero() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -8, scale: 1.02 }}
-                className="group relative flex-shrink-0 w-[280px]"
+                className="group relative flex-shrink-0 w-[240px]"
               >
-                <div className="relative h-[400px] rounded-[24px] border border-[#2c2c2c] bg-gradient-to-br from-[#0a0a0a] to-[#050505] overflow-hidden transition-all duration-300 group-hover:border-[#ddfe00]/50 group-hover:shadow-[0_0_30px_rgba(221,254,0,0.2)]">
-                  <div className="absolute inset-0 rounded-[24px] border border-[#ddfe00]/0 group-hover:border-[#ddfe00]/20 transition-all duration-500" />
+                <div className="relative h-[280px] rounded-[20px] border border-[#2c2c2c] bg-gradient-to-br from-[#0a0a0a] to-[#050505] overflow-hidden transition-all duration-300 group-hover:border-[#ddfe00]/50 group-hover:shadow-[0_0_30px_rgba(221,254,0,0.2)]">
+                  <div className="absolute inset-0 rounded-[20px] border border-[#ddfe00]/0 group-hover:border-[#ddfe00]/20 transition-all duration-500" />
                   <div className="absolute inset-0 bg-[#ddfe00]/0 group-hover:bg-[#ddfe00]/5 transition-all duration-300 blur-xl -z-10" />
                   <div className="relative w-full h-3/4 overflow-hidden">
                     <motion.img
@@ -261,11 +261,11 @@ export default function Hero() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent" />
                   </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[#0a0a0a] to-transparent">
-                    <h3 className="text-white font-bold text-lg mb-2 group-hover:text-[#ddfe00] transition-colors duration-300">
+                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-[#0a0a0a] to-transparent">
+                    <h3 className="text-white font-bold text-base mb-1.5 group-hover:text-[#ddfe00] transition-colors duration-300">
                       {project.title}
                     </h3>
-                    <p className="text-[#8b8b8b] text-sm leading-relaxed group-hover:text-[#cfcfcf] transition-colors duration-300">
+                    <p className="text-[#8b8b8b] text-xs leading-relaxed group-hover:text-[#cfcfcf] transition-colors duration-300">
                       {project.subtitle}
                     </p>
                   </div>

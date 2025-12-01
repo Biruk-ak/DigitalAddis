@@ -62,7 +62,7 @@ export default function Navbar() {
               alt="DigitalAddis Logo" 
               width={120}
               height={40}
-              className="h-8 sm:h-10 lg:h-12 w-auto object-contain group-hover:opacity-80 transition-opacity duration-300"
+              // className="h-8 sm:h-10 lg:h-12 w-auto object-contain group-hover:opacity-80 transition-opacity duration-300"
               priority
             />
           </Link>

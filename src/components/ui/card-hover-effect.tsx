@@ -70,22 +70,22 @@ export const VARIANTS = {
 
 const SIZES = {
   sm: {
-    padding: 'p-6 pt-12',
-    iconSize: 'h-5 w-5',
-    titleSize: 'text-sm',
-    descSize: 'text-xs',
+    padding: 'p-4 pt-10',
+    iconSize: 'h-4 w-4',
+    titleSize: 'text-xs',
+    descSize: 'text-[11px]',
   },
   md: {
     padding: 'p-8 pt-16',
     iconSize: 'h-6 w-6',
     titleSize: 'text-base',
-    descSize: 'text-[15px]',
+    descSize: 'text-sm',
   },
   lg: {
-    padding: 'p-6 pt-16',
-    iconSize: 'h-7 w-7',
-    titleSize: 'text-lg',
-    descSize: 'text-base',
+    padding: 'p-5 pt-12',
+    iconSize: 'h-6 w-6',
+    titleSize: 'text-base',
+    descSize: 'text-sm',
   },
 };
 
@@ -148,7 +148,7 @@ export function CardHoverEffect({
         }}
       >
         <div
-          className="absolute inset-[-200%] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          className="absolute inset-[-200%] opacity-0 transition-opacity duration-300 group-hover:opacity-100 [animation-play-state:paused] group-hover:[animation-play-state:running]"
           style={{
             background: `conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 340deg, var(--card-color) 360deg)`,
             animation: 'spin 4s linear infinite',
