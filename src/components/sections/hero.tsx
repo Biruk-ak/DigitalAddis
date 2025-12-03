@@ -136,7 +136,7 @@ export default function Hero() {
               {/* Glow effect */}
               <div className="absolute inset-0 rounded-full bg-[#ddfe00]/20 blur-xl -z-10" />
               <span className="text-[#ddfe00] text-xs font-semibold tracking-wider uppercase">
-                DigitalAddisasdddd
+                DigitalAddis
               </span>
             </div>
           </motion.div>

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import { VelocityScroll } from '@/components/ui/velocity-scroll';
+import Image from 'next/image';
 
 interface Client {
   id: number;
@@ -25,46 +26,22 @@ interface Testimonial {
 }
 
 const clients: Client[] = [
-  {
-    id: 1,
-    name: 'TechCorp',
-    logo: '/api/placeholder/200/100',
-  },
-  {
-    id: 2,
-    name: 'InnovateHub',
-    logo: '/api/placeholder/200/100',
-  },
-  {
-    id: 3,
-    name: 'DigitalFlow',
-    logo: '/api/placeholder/200/100',
-  },
-  {
-    id: 4,
-    name: 'CloudSync',
-    logo: '/api/placeholder/200/100',
-  },
-  {
-    id: 5,
-    name: 'StartupX',
-    logo: '/api/placeholder/200/100',
-  },
-  {
-    id: 6,
-    name: 'FutureTech',
-    logo: '/api/placeholder/200/100',
-  },
-  {
-    id: 7,
-    name: 'NexGen Solutions',
-    logo: '/api/placeholder/200/100',
-  },
-  {
-    id: 8,
-    name: 'DataDrive',
-    logo: '/api/placeholder/200/100',
-  },
+  { id: 1, name: 'Oromia Bank', logo: '/brands/oromia.png' },
+  { id: 2, name: 'Telebirr', logo: '/brands/telebirr.png' },
+  { id: 3, name: 'Wegagen Bank', logo: '/brands/wegagenbank.png' },
+  { id: 4, name: 'Tsehay Bank', logo: '/brands/tsehaybank.png' },
+  { id: 5, name: 'Ethio Telecom', logo: '/brands/tele.png' },
+  { id: 6, name: 'Cooperative Bank', logo: '/brands/coop.png' },
+  { id: 7, name: 'Hibret Bank', logo: '/brands/hibret.png' },
+  { id: 8, name: 'Abay Bank', logo: '/brands/abaybank.png' },
+  { id: 9, name: 'CTI', logo: '/brands/cti.png' },
+  { id: 10, name: 'SafeZone', logo: '/brands/safezone.png' },
+  { id: 11, name: 'Hub Addis', logo: '/brands/hubaddis.png' },
+  { id: 12, name: 'Amara Bank', logo: '/brands/amarabank.png' },
+  { id: 13, name: 'Ahadu Bank', logo: '/brands/ahadubank.png' },
+  { id: 14, name: 'Bynna Bank', logo: '/brands/bynnabank.png' },
+  { id: 15, name: "Kaldi's Coffee", logo: '/brands/kaldi\'s.png' },
+  { id: 16, name: 'NBC', logo: '/brands/nbc.png' },
 ];
 
 const testimonials: Testimonial[] = [
@@ -202,16 +179,19 @@ export default function Testimonials() {
             <div className="flex gap-4">
               {clients.map((client) => (
                 <div key={client.id} className="group flex-shrink-0">
-                  <div className="relative w-48 h-32 lg:w-64 lg:h-40 flex items-center justify-center mx-4">
+                  <div className="relative w-56 h-40 lg:w-80 lg:h-52 flex items-center justify-center mx-4">
                     {/* Glow Effect on Hover */}
                     <div className="absolute inset-0 bg-[#ddfe00]/0 group-hover:bg-[#ddfe00]/10 rounded-xl blur-xl transition-all duration-300"></div>
                     
                     {/* Card Container */}
-                    <div className="relative w-full h-full bg-gray-900/50 border border-gray-800 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:border-[#ddfe00]/50 group-hover:bg-gray-900/80 grayscale group-hover:grayscale-0 group-hover:brightness-110">
-                      {/* Client Name */}
-                      <div className="text-gray-500 group-hover:text-[#ddfe00] transition-colors duration-300 font-semibold text-sm lg:text-base relative z-10">
-                        {client.name}
-                      </div>
+                    <div className="relative w-full h-full border border-gray-800/50 rounded-xl flex items-center justify-center p-4 transition-all duration-300 group-hover:border-[#ddfe00]/50 group-hover:brightness-110">
+                      {/* Client Logo */}
+                      <Image 
+                        src={client.logo} 
+                        alt={client.name} 
+                        fill
+                        className="object-contain p-1 relative z-10"
+                      />
                       
                       {/* Glow on Hover */}
                       <div className="absolute inset-0 rounded-xl bg-[#ddfe00]/0 group-hover:bg-[#ddfe00]/5 transition-all duration-300 blur-sm"></div>
@@ -229,16 +209,19 @@ export default function Testimonials() {
             <div className="flex gap-4">
               {clients.map((client) => (
                 <div key={client.id} className="group flex-shrink-0">
-                  <div className="relative w-48 h-32 lg:w-64 lg:h-40 flex items-center justify-center mx-4">
+                  <div className="relative w-56 h-40 lg:w-80 lg:h-52 flex items-center justify-center mx-4">
                     {/* Glow Effect on Hover */}
                     <div className="absolute inset-0 bg-[#ddfe00]/0 group-hover:bg-[#ddfe00]/10 rounded-xl blur-xl transition-all duration-300"></div>
                     
                     {/* Card Container */}
-                    <div className="relative w-full h-full bg-gray-900/50 border border-gray-800 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:border-[#ddfe00]/50 group-hover:bg-gray-900/80 grayscale group-hover:grayscale-0 group-hover:brightness-110">
-                      {/* Client Name */}
-                      <div className="text-gray-500 group-hover:text-[#ddfe00] transition-colors duration-300 font-semibold text-sm lg:text-base relative z-10">
-                        {client.name}
-                      </div>
+                    <div className="relative w-full h-full border border-gray-800/50 rounded-xl flex items-center justify-center p-4 transition-all duration-300 group-hover:border-[#ddfe00]/50 group-hover:brightness-110">
+                      {/* Client Logo */}
+                      <Image 
+                        src={client.logo} 
+                        alt={client.name} 
+                        fill
+                        className="object-contain p-1 relative z-10"
+                      />
                       
                       {/* Glow on Hover */}
                       <div className="absolute inset-0 rounded-xl bg-[#ddfe00]/0 group-hover:bg-[#ddfe00]/5 transition-all duration-300 blur-sm"></div>

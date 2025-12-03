@@ -1,5 +1,5 @@
 'use client';
-
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 interface Technology {
@@ -11,117 +11,64 @@ const technologies: Technology[] = [
   // Row 1: Figma, Framer Motion, Webflow, Wix, HTML, CSS
   { 
     name: 'Figma', 
-    icon: (
-      <div className="w-full h-full flex items-center justify-center">
-        <div className="text-4xl font-bold" style={{ 
-          background: 'linear-gradient(135deg, #F24E1E 0%, #A259FF 25%, #1ABCFE 50%, #0ACF83 75%, #FF7262 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text'
-        }}>F</div>
-      </div>
-    )
+    icon: <Image src="/icon/figma.png" alt="Figma" width={48} height={48} className="object-contain" />
   },
   { 
     name: 'Framer Motion', 
     icon: (
-      <div className="w-full h-full flex items-center justify-center">
-        <div className="text-3xl font-bold text-blue-500">F</div>
+      <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-600 rounded-lg flex items-center justify-center">
+        <span className="text-white font-bold text-xl">F</span>
       </div>
     )
   },
   { 
-    name: 'Webflow', 
-    icon: (
-      <div className="w-full h-full flex items-center justify-center">
-        <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center">
-          <span className="text-white font-bold text-xl">W</span>
-        </div>
-      </div>
-    )
+    name: 'postgre', 
+    icon: <Image src="/icon/postgre.png" alt="Wix" width={48} height={48} className="object-contain" />
   },
   { 
     name: 'Wix', 
-    icon: (
-      <div className="w-full h-full flex items-center justify-center">
-        <div className="text-2xl font-bold text-purple-500">WIX</div>
-      </div>
-    )
+    icon: <Image src="/icon/wix.png" alt="Wix" width={48} height={48} className="object-contain" />
   },
   { 
     name: 'HTML', 
-    icon: (
-      <div className="w-full h-full flex items-center justify-center">
-        <div className="w-12 h-12 bg-orange-500 rounded flex items-center justify-center">
-          <span className="text-white font-bold text-lg">5</span>
-        </div>
-      </div>
-    )
+    icon: <Image src="/icon/html.png" alt="HTML" width={48} height={48} className="object-contain" />
   },
   { 
     name: 'CSS', 
-    icon: (
-      <div className="w-full h-full flex items-center justify-center">
-        <div className="w-12 h-12 bg-blue-500 rounded flex items-center justify-center">
-          <span className="text-white font-bold text-lg">3</span>
-        </div>
-      </div>
-    )
+    icon: <Image src="/icon/css-3.png" alt="CSS" width={48} height={48} className="object-contain" />
   },
   // Row 2: Tailwind CSS, Bootstrap, JavaScript, TypeScript, React, Next.js
   { 
     name: 'Tailwind CSS', 
     icon: (
-      <div className="w-full h-full flex items-center justify-center">
-        <div className="text-3xl text-cyan-400">~</div>
+      <div className="w-12 h-12 flex items-center justify-center">
+        <svg viewBox="0 0 54 33" className="w-12 h-8 text-cyan-400 fill-current">
+          <path d="M27 0c-7.2 0-11.7 3.6-13.5 10.8 2.7-3.6 5.85-4.95 9.45-4.05 2.054.514 3.522 2.004 5.147 3.653C30.744 13.09 33.808 16.2 40.5 16.2c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.514-3.522-2.004-5.147-3.653C36.756 3.11 33.692 0 27 0zM13.5 16.2C6.3 16.2 1.8 19.8 0 27c2.7-3.6 5.85-4.95 9.45-4.05 2.054.514 3.522 2.004 5.147 3.653C17.244 29.29 20.308 32.4 27 32.4c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.514-3.522-2.004-5.147-3.653C23.256 19.31 20.192 16.2 13.5 16.2z"/>
+        </svg>
       </div>
     )
   },
   { 
     name: 'Bootstrap', 
-    icon: (
-      <div className="w-full h-full flex items-center justify-center">
-        <div className="w-12 h-12 bg-purple-600 rounded flex items-center justify-center">
-          <span className="text-white font-bold text-xl">B</span>
-        </div>
-      </div>
-    )
+    icon: <Image src="/icon/bootstrap.png" alt="Bootstrap" width={48} height={48} className="object-contain" />
   },
   { 
     name: 'JavaScript', 
-    icon: (
-      <div className="w-full h-full flex items-center justify-center">
-        <div className="w-12 h-12 bg-yellow-400 rounded flex items-center justify-center">
-          <span className="text-black font-bold text-sm">JS</span>
-        </div>
-      </div>
-    )
+    icon: <Image src="/icon/js.png" alt="JavaScript" width={48} height={48} className="object-contain" />
   },
   { 
     name: 'TypeScript', 
-    icon: (
-      <div className="w-full h-full flex items-center justify-center">
-        <div className="w-12 h-12 bg-blue-600 rounded flex items-center justify-center">
-          <span className="text-white font-bold text-sm">TS</span>
-        </div>
-      </div>
-    )
+    icon: <Image src="/icon/typescript.png" alt="TypeScript" width={48} height={48} className="object-contain" />
   },
   { 
     name: 'React', 
-    icon: (
-      <div className="w-full h-full flex items-center justify-center">
-        <div className="text-4xl text-cyan-400">⚛</div>
-      </div>
-    )
+    icon: <Image src="/icon/reactjs.png" alt="React" width={48} height={48} className="object-contain" />
   },
   { 
     name: 'Next.js', 
     icon: (
-      <div className="w-full h-full flex items-center justify-center">
-        <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center border-2 border-white">
-          <span className="text-white font-bold text-lg">N</span>
-        </div>
+      <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center border-2 border-white">
+        <span className="text-white font-bold text-lg">N</span>
       </div>
     )
   },
@@ -129,50 +76,38 @@ const technologies: Technology[] = [
   { 
     name: 'Expo', 
     icon: (
-      <div className="w-full h-full flex items-center justify-center">
-        <div className="text-3xl text-blue-500">▲</div>
+      <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center">
+        <span className="text-white font-bold text-xl">E</span>
       </div>
     )
   },
   { 
     name: 'React Native', 
-    icon: (
-      <div className="w-full h-full flex items-center justify-center">
-        <div className="text-4xl text-purple-500">⚛</div>
-      </div>
-    )
+    icon: <Image src="/icon/reactjs.png" alt="React Native" width={48} height={48} className="object-contain" />
   },
   { 
     name: 'Node.js', 
-    icon: (
-      <div className="w-full h-full flex items-center justify-center">
-        <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center">
-          <span className="text-white font-bold text-xs">JS</span>
-        </div>
-      </div>
-    )
+    icon: <Image src="/icon/nodejs.png" alt="Node.js" width={48} height={48} className="object-contain" />
   },
   { 
     name: 'Express.js', 
-    icon: (
-      <div className="w-full h-full flex items-center justify-center">
-        <div className="text-2xl font-light text-gray-300">ex</div>
-      </div>
-    )
+    icon: <Image src="/icon/express js.png" alt="Express.js" width={48} height={48} className="object-contain" />
   },
   { 
     name: 'NestJS', 
     icon: (
-      <div className="w-full h-full flex items-center justify-center">
-        <div className="text-3xl text-red-500">N</div>
+      <div className="w-12 h-12 flex items-center justify-center">
+        <span className="text-red-500 font-bold text-2xl">N</span>
       </div>
     )
   },
   { 
     name: 'Prisma', 
     icon: (
-      <div className="w-full h-full flex items-center justify-center">
-        <div className="w-10 h-10 bg-cyan-400 rotate-45 rounded-sm"></div>
+      <div className="w-12 h-12 flex items-center justify-center">
+        <svg viewBox="0 0 24 24" className="w-10 h-10 fill-current text-cyan-400">
+          <path d="M21.807 18.285L13.553.756a1.324 1.324 0 00-1.129-.754 1.31 1.31 0 00-1.206.626l-8.952 14.5a1.356 1.356 0 00.016 1.455l4.376 6.778a1.408 1.408 0 001.58.581l12.703-3.757c.389-.115.707-.39.873-.755s.164-.783-.007-1.145zm-1.848.752L9.18 22.224a.452.452 0 01-.575-.52l3.85-18.438c.072-.345.549-.4.699-.08l7.129 15.138a.515.515 0 01-.324.713z"/>
+        </svg>
       </div>
     )
   },
