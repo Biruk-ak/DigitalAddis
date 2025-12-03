@@ -175,11 +175,11 @@ export default function Testimonials() {
       >
         {/* First Row - Scrolling Right */}
         <div className="w-full">
-          <VelocityScroll default_velocity={2}>
+          <VelocityScroll default_velocity={0.8}>
             <div className="flex gap-4">
               {clients.map((client) => (
                 <div key={client.id} className="group flex-shrink-0">
-                  <div className="relative w-56 h-40 lg:w-80 lg:h-52 flex items-center justify-center mx-4">
+                  <div className="relative w-44 h-32 lg:w-64 lg:h-40 flex items-center justify-center mx-3">
                     {/* Glow Effect on Hover */}
                     <div className="absolute inset-0 bg-[#ddfe00]/0 group-hover:bg-[#ddfe00]/10 rounded-xl blur-xl transition-all duration-300"></div>
                     
@@ -205,11 +205,11 @@ export default function Testimonials() {
 
         {/* Second Row - Scrolling Left */}
         <div className="w-full">
-          <VelocityScroll default_velocity={-2}>
+          <VelocityScroll default_velocity={-0.8}>
             <div className="flex gap-4">
               {clients.map((client) => (
                 <div key={client.id} className="group flex-shrink-0">
-                  <div className="relative w-56 h-40 lg:w-80 lg:h-52 flex items-center justify-center mx-4">
+                  <div className="relative w-44 h-32 lg:w-64 lg:h-40 flex items-center justify-center mx-3">
                     {/* Glow Effect on Hover */}
                     <div className="absolute inset-0 bg-[#ddfe00]/0 group-hover:bg-[#ddfe00]/10 rounded-xl blur-xl transition-all duration-300"></div>
                     
