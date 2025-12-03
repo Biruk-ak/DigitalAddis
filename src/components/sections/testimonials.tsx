@@ -138,7 +138,7 @@ export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardsToShow, setCardsToShow] = useState(3);
 
-  // Update cards to show based on screen size
+  // Update cards to show based on screen size - Show 3 at a time on desktop
   useEffect(() => {
     const updateCardsToShow = () => {
       if (window.innerWidth < 640) {
@@ -253,69 +253,100 @@ export default function Testimonials() {
 
       {/* Testimonials Section */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left Side - Large Image */}
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-stretch">
+          {/* Left Side - CEO Image */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: -100, scale: 0.95 }}
+            whileInView={{ opacity: 1, x: 0, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative hidden lg:block"
+            transition={{ 
+              duration: 1.2, 
+              ease: [0.25, 0.1, 0.25, 1],
+              opacity: { duration: 0.8 },
+              x: { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] },
+              scale: { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }
+            }}
+            className="relative hidden lg:block w-[25%] lg:w-[30%] flex-shrink-0 flex"
           >
-            {/* Soft Neon Green Glow Behind Image */}
-            <div className="absolute inset-0 bg-[#ddfe00] opacity-[0.15] blur-[80px] rounded-full -z-10"></div>
-            
-            {/* Image Container */}
-            <div className="relative w-full h-[600px] rounded-2xl overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1200&fit=crop&crop=face"
-                alt="Client testimonial"
-                className="w-full h-full object-cover"
-              />
-              {/* Overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0b0b0b]/80 via-transparent to-transparent"></div>
+            {/* Image Container - Enlarged */}
+            <div className="relative w-full h-full flex flex-col">
+              {/* Neon Blurred Glow Behind Image */}
+              <div className="absolute inset-0 -z-10 flex items-center justify-center">
+                <div 
+                  className="w-[80%] h-[80%] rounded-full opacity-40 blur-3xl"
+                  style={{
+                    background: 'radial-gradient(circle, rgba(221, 254, 0, 0.6) 0%, rgba(221, 254, 0, 0.3) 50%, transparent 100%)',
+                  }}
+                />
+              </div>
+              
+              <div className="relative w-full h-full z-10">
+                <img
+                  src="/aman.png"
+                  alt="CEO"
+                  className="w-full h-full object-contain object-left scale-125"
+                />
+              </div>
             </div>
           </motion.div>
 
           {/* Right Side - Title + Testimonials Carousel */}
-          <div className="w-full">
-            {/* Section Title & Subtitle */}
+          <div className="w-full lg:w-[70%] lg:flex-1 flex flex-col">
+            {/* Section Header with Icon and Navigation */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="mb-12"
+              transition={{ 
+                duration: 0.8, 
+                delay: 0.2,
+                ease: [0.25, 0.1, 0.25, 1],
+                opacity: { duration: 0.6 },
+                y: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }
+              }}
+              className="mb-12 flex items-start justify-between gap-4 flex-shrink-0"
             >
-              <p className="text-sm uppercase tracking-wider text-[#ddfe00] mb-3 font-semibold">
-                Testimonials
-              </p>
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-2 leading-tight">
-                Our Clients Say{' '}
-                <span className="text-[#ddfe00]">About Our Agency</span>
-              </h2>
+              {/* Left Side - Icon and Label */}
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-4">
+                  {/* Green Icon/Play Button */}
+                  <div className="w-8 h-8 bg-[#ddfe00] rounded flex items-center justify-center">
+                    <div className="w-4 h-4 border-2 border-black rounded-sm"></div>
+                  </div>
+                  <p className="text-sm uppercase tracking-wider text-[#ddfe00] font-semibold">
+                    TESTIMONIALS
+                  </p>
+                </div>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-3xl xl:max-w-xs font-bold text-white mb-2 leading-tight uppercase tracking-tight">
+                  OUR CLIENTS SAY{' '}
+                  <span className="text-[#ddfe00]">ABOUT OUR AGENCY</span>
+                </h2>
+              </div>
+
+              {/* Right Side - Navigation Arrows (Top Right) */}
+              <div className="flex items-center gap-2 flex-shrink-0">
+                <button
+                  onClick={prevSlide}
+                  className="w-10 h-10 lg:w-12 lg:h-12 rounded-full border border-white/20 bg-[#0b0b0b]/80 backdrop-blur-sm flex items-center justify-center text-white hover:border-[#ddfe00] hover:bg-[#ddfe00]/10 transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:shadow-lg hover:shadow-[#ddfe00]/20 focus:outline-none focus:ring-2 focus:ring-[#ddfe00]/50"
+                  aria-label="Previous testimonial"
+                >
+                  <ChevronLeft size={20} className="lg:w-6 lg:h-6" />
+                </button>
+
+                <button
+                  onClick={nextSlide}
+                  className="w-10 h-10 lg:w-12 lg:h-12 rounded-full border border-white/20 bg-[#0b0b0b]/80 backdrop-blur-sm flex items-center justify-center text-white hover:border-[#ddfe00] hover:bg-[#ddfe00]/10 transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:shadow-lg hover:shadow-[#ddfe00]/20 focus:outline-none focus:ring-2 focus:ring-[#ddfe00]/50"
+                  aria-label="Next testimonial"
+                >
+                  <ChevronRight size={20} className="lg:w-6 lg:h-6" />
+                </button>
+              </div>
             </motion.div>
 
             {/* Carousel Container */}
-            <div className="relative">
-              {/* Navigation Arrows */}
-              <button
-                onClick={prevSlide}
-                className="absolute left-0 lg:-left-16 top-1/2 -translate-y-1/2 z-20 w-10 h-10 lg:w-12 lg:h-12 rounded-full border-2 border-[#ddfe00]/50 bg-[#0b0b0b]/80 backdrop-blur-sm flex items-center justify-center text-[#ddfe00] hover:border-[#ddfe00] hover:bg-[#ddfe00]/10 transition-all duration-300 hover:shadow-lg hover:shadow-[#ddfe00]/20 focus:outline-none focus:ring-2 focus:ring-[#ddfe00]/50"
-                aria-label="Previous testimonial"
-              >
-                <ChevronLeft size={20} className="lg:w-6 lg:h-6" />
-              </button>
+            <div className="relative flex-1 flex flex-col justify-center">
 
-              <button
-                onClick={nextSlide}
-                className="absolute right-0 lg:-right-16 top-1/2 -translate-y-1/2 z-20 w-10 h-10 lg:w-12 lg:h-12 rounded-full border-2 border-[#ddfe00]/50 bg-[#0b0b0b]/80 backdrop-blur-sm flex items-center justify-center text-[#ddfe00] hover:border-[#ddfe00] hover:bg-[#ddfe00]/10 transition-all duration-300 hover:shadow-lg hover:shadow-[#ddfe00]/20 focus:outline-none focus:ring-2 focus:ring-[#ddfe00]/50"
-                aria-label="Next testimonial"
-              >
-                <ChevronRight size={20} className="lg:w-6 lg:h-6" />
-              </button>
-
-              {/* Testimonial Cards */}
+              {/* Testimonial Cards - 3 Cards at a Time */}
               <div className="relative overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -323,68 +354,84 @@ export default function Testimonials() {
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -50 }}
-                    transition={{ duration: 0.5, ease: 'easeInOut' }}
+                    transition={{ 
+                      duration: 0.7, 
+                      ease: [0.25, 0.1, 0.25, 1],
+                      opacity: { duration: 0.5 },
+                      x: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }
+                    }}
                     className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
                   >
-                    {visibleTestimonials.map((testimonial) => (
+                    {visibleTestimonials.map((testimonial, index) => (
                       <motion.div
                         key={testimonial.id}
-                        whileHover={{ scale: 1.02 }}
-                        className="group relative bg-[#0b0b0b] border border-[#2c2c2c] rounded-[24px] p-6 transition-all duration-300 hover:border-[#ddfe00]/50 hover:shadow-lg hover:shadow-[#ddfe00]/5"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ 
+                          delay: index * 0.1, 
+                          duration: 0.6,
+                          ease: [0.25, 0.1, 0.25, 1],
+                          opacity: { duration: 0.5 },
+                          y: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }
+                        }}
+                        whileHover={{ 
+                          scale: 1.02, 
+                          y: -5,
+                          transition: { 
+                            duration: 0.3,
+                            ease: [0.25, 0.1, 0.25, 1]
+                          }
+                        }}
+                        className="group relative bg-black/20 backdrop-blur-md border border-white/10 rounded-2xl p-6 transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:border-white/20 hover:bg-black/30"
+                        style={{
+                          backdropFilter: 'blur(12px)',
+                          WebkitBackdropFilter: 'blur(12px)',
+                        }}
                       >
-                        {/* Glow Effect on Hover */}
-                        <div className="absolute inset-0 rounded-[24px] bg-[#ddfe00]/0 group-hover:bg-[#ddfe00]/5 transition-all duration-300 blur-xl -z-10"></div>
-
                         {/* Card Content */}
                         <div className="relative z-10">
                           {/* Avatar & Name Row */}
-                          <div className="flex items-center gap-4 mb-4">
-                            <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-[#2c2c2c] group-hover:border-[#ddfe00]/50 transition-colors duration-300">
+                          <div className="flex items-center gap-3 mb-4">
+                            <div className="w-12 h-12 rounded-full overflow-hidden border border-gray-700">
                               <img
                                 src={testimonial.avatar}
                                 alt={testimonial.name}
                                 className="w-full h-full object-cover"
                               />
                             </div>
-                            <div className="flex-1">
-                              <h4 className="text-white font-semibold text-base mb-1 group-hover:text-[#ddfe00] transition-colors duration-300">
+                            <div className="flex-1 min-w-0">
+                              <h4 className="text-white font-semibold text-sm mb-1 uppercase tracking-wide truncate">
                                 {testimonial.name}
                               </h4>
                               <div className="flex items-center gap-2">
-                                <span className="text-2xl">{countryFlags[testimonial.countryCode] || '🌍'}</span>
-                                <span className="text-[#8b8b8b] text-sm">{testimonial.country}</span>
+                                <span className="text-lg">{countryFlags[testimonial.countryCode] || '🌍'}</span>
+                                <span className="text-gray-400 text-xs">{testimonial.country}</span>
                               </div>
                             </div>
                           </div>
 
                           {/* Review Text */}
-                          <p className="text-[#cccccc] text-sm leading-relaxed mb-4 group-hover:text-white transition-colors duration-300" style={{
-                            display: '-webkit-box',
-                            WebkitLineClamp: 6,
-                            WebkitBoxOrient: 'vertical',
-                            overflow: 'hidden',
-                          }}>
+                          <p className="text-gray-300 text-sm leading-relaxed mb-4 line-clamp-6">
                             {testimonial.review}
                           </p>
 
                           {/* Rating Stars */}
-                          <div className="flex items-center gap-1 mb-4">
+                          <div className="flex items-center gap-1">
                             {Array.from({ length: 5 }).map((_, i) => (
                               <Star
                                 key={i}
-                                size={16}
+                                size={14}
                                 className={`${
                                   i < testimonial.rating
                                     ? 'fill-[#ddfe00] text-[#ddfe00]'
-                                    : 'fill-[#2c2c2c] text-[#2c2c2c]'
-                                } transition-colors duration-300`}
+                                    : 'fill-gray-800 text-gray-800'
+                                }`}
                               />
                             ))}
-                            <span className="ml-2 text-[#8b8b8b] text-sm">{testimonial.rating.toFixed(1)}</span>
+                            {testimonial.rating === 5.0 && (
+                              <span className="ml-2 text-gray-400 text-xs">{testimonial.rating.toFixed(1)}</span>
+                            )}
                           </div>
-
-                          {/* Bottom Divider */}
-                          <div className="h-px bg-gradient-to-r from-transparent via-[#2c2c2c] to-transparent group-hover:via-[#ddfe00]/30 transition-all duration-300"></div>
                         </div>
                       </motion.div>
                     ))}
@@ -392,7 +439,7 @@ export default function Testimonials() {
                 </AnimatePresence>
               </div>
 
-              {/* Carousel Indicators (Optional) */}
+              {/* Carousel Indicators */}
               <div className="flex justify-center gap-2 mt-8">
                 {Array.from({ length: maxIndex + 1 }).map((_, index) => (
                   <button

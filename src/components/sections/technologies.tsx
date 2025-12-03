@@ -8,7 +8,7 @@ interface Technology {
 }
 
 const technologies: Technology[] = [
-  // Row 1
+  // Row 1: Figma, Framer Motion, Webflow, Wix, HTML, CSS
   { 
     name: 'Figma', 
     icon: (
@@ -48,7 +48,6 @@ const technologies: Technology[] = [
       </div>
     )
   },
-  // Row 2
   { 
     name: 'HTML', 
     icon: (
@@ -69,6 +68,7 @@ const technologies: Technology[] = [
       </div>
     )
   },
+  // Row 2: Tailwind CSS, Bootstrap, JavaScript, TypeScript, React, Next.js
   { 
     name: 'Tailwind CSS', 
     icon: (
@@ -87,7 +87,6 @@ const technologies: Technology[] = [
       </div>
     )
   },
-  // Row 3
   { 
     name: 'JavaScript', 
     icon: (
@@ -126,7 +125,7 @@ const technologies: Technology[] = [
       </div>
     )
   },
-  // Row 4
+  // Row 3: Expo, React Native, Node.js, Express.js, NestJS, Prisma
   { 
     name: 'Expo', 
     icon: (
@@ -165,7 +164,7 @@ const technologies: Technology[] = [
     name: 'NestJS', 
     icon: (
       <div className="w-full h-full flex items-center justify-center">
-        <div className="text-3xl text-pink-500">N</div>
+        <div className="text-3xl text-red-500">N</div>
       </div>
     )
   },
@@ -245,31 +244,49 @@ export default function Technologies() {
           </div>
         </motion.div>
 
-        {/* Technologies Grid - 4 columns */}
+        {/* Technologies Grid - 6 columns on desktop, 3 on tablet, 2 on mobile - No gaps, boxes touching */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 lg:gap-6"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-0 border border-gray-800"
         >
-          {technologies.map((tech, index) => (
-            <motion.div
-              key={index}
-              variants={cardVariants}
-              className="group relative bg-[#1a1a1a] dark:bg-[#0f0f0f] rounded-xl p-4 lg:p-6 border border-gray-800 hover:border-gray-700 transition-all duration-300"
-            >
-              {/* Icon Container */}
-              <div className="relative w-full h-16 lg:h-20 mb-3 flex items-center justify-center">
-                {tech.icon}
-              </div>
+          {technologies.map((tech, index) => {
+            const isLastInRow = (index + 1) % 6 === 0;
+            const isInLastRow = index >= 12;
+            return (
+              <motion.div
+                key={index}
+                variants={cardVariants}
+                className={`group relative bg-[#1a1a1a] dark:bg-[#0f0f0f] p-4 lg:p-6 border-r border-b border-gray-800 transition-all duration-300 overflow-visible ${
+                  isLastInRow ? 'lg:border-r-0' : ''
+                } ${isInLastRow ? 'border-b-0' : ''}`}
+                style={{
+                  boxShadow: 'none',
+                }}
+              >
+                {/* Glow overlay on hover - ensures full rounded glow on all sides */}
+                <div 
+                  className="absolute inset-0 border border-[#ddfe00] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" 
+                  style={{
+                    boxShadow: '0 0 20px rgba(221, 254, 0, 0.5), 0 0 40px rgba(221, 254, 0, 0.3), 0 0 60px rgba(221, 254, 0, 0.1)',
+                    margin: '-1px',
+                    zIndex: 1,
+                  }}
+                />
+                {/* Icon Container */}
+                <div className="relative w-full h-16 lg:h-20 mb-3 flex items-center justify-center z-10">
+                  {tech.icon}
+                </div>
 
-              {/* Technology Name */}
-              <span className="text-xs lg:text-sm font-medium text-white text-center block">
-                {tech.name}
-              </span>
-            </motion.div>
-          ))}
+                {/* Technology Name */}
+                <span className="relative text-xs lg:text-sm font-medium text-white text-center block z-10">
+                  {tech.name}
+                </span>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

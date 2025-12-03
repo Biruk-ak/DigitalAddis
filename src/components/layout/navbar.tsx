@@ -29,33 +29,30 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
-      <div className={`fixed left-0 right-0 px-4 sm:px-6 lg:px-8 pointer-events-none transition-all duration-300 ${
+      {/* Background Shape - Full width when scrolled, constrained when not */}
+      <div 
+        className={`fixed transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+          isScrolled 
+            ? 'bg-black/70 backdrop-blur-xl shadow-lg shadow-[#ddfe00]/10 border-b border-[#ddfe00]/20 left-0 right-0 top-0' 
+            : 'bg-transparent backdrop-blur-none left-4 right-4 top-4'
+        }`}
+        style={{
+          height: '5rem',
+          borderRadius: isScrolled ? '0' : '9999px',
+          maxWidth: isScrolled ? '100%' : '80rem',
+          margin: '0 auto',
+        }}
+      />
+      
+      {/* Content Container - Always constrained to max-w-7xl */}
+      <div className={`fixed left-0 right-0 pointer-events-none transition-all duration-300 ${
         isScrolled ? 'top-0' : 'top-4'
       }`}>
-        {/* Background Shape - Changes based on scroll */}
-        <div 
-          className={`absolute inset-0 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
-            isScrolled 
-              ? 'bg-black/70 backdrop-blur-xl shadow-lg shadow-[#ddfe00]/10 border-b border-[#ddfe00]/20' 
-              : 'bg-transparent backdrop-blur-none'
-          }`}
-          style={{
-            top: 0,
-            left: isScrolled ? '0' : '1rem',
-            right: isScrolled ? '0' : '1rem',
-            height: '5rem',
-            borderRadius: isScrolled ? '0' : '9999px',
-            maxWidth: isScrolled ? '100%' : '56rem',
-            margin: isScrolled ? '0' : '0 auto',
-          }}
-        />
-        
-        {/* Content Container - Always same position */}
-        <div className="relative w-full h-20 py-2 pointer-events-auto">
+        <div className="relative w-full max-w-7xl mx-auto h-20 py-2 pointer-events-auto px-4 sm:px-6 lg:px-8">
           {/* Logo - Left - Fixed Position */}
           <Link
             href="/"
-            className="absolute left-8 sm:left-12 lg:left-16 top-1/2 -translate-y-1/2 flex items-center space-x-2 group h-full z-10"
+            className="absolute left-0 top-1/2 -translate-y-1/2 flex items-center space-x-2 group h-full z-10"
           >
             <Image 
               src="/dalogo.png" 
@@ -96,7 +93,7 @@ export default function Navbar() {
           </div>
 
           {/* Contact Button - Right - Fixed Position */}
-          <div className="absolute right-8 sm:right-12 lg:right-16 top-1/2 -translate-y-1/2 flex items-center gap-4 z-10">
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center gap-4 z-10">
             <Link
               href="/contact"
               className="hidden md:block px-6 py-2.5 bg-[#ddfe00] text-black font-semibold rounded-full hover:bg-[#ddfe00] hover:shadow-lg hover:shadow-[#ddfe00]/50 transition-shadow duration-300 transform hover:scale-105"

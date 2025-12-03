@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { TextEffect } from '@/components/core/text-effect';
 
 // Project card data
 const projects = [
@@ -141,18 +142,35 @@ export default function Hero() {
           </motion.div>
 
           {/* Main Heading */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-2 sm:mb-3 leading-[1.1] tracking-tight"
-          >
-            <span className="text-white">INNOVATING YOUR</span>
-            <br />
-            <span className="text-[#ddfe00]">DIGITAL</span>
-            <br />
-            <span className="text-white">WORLD WITH US</span>
-          </motion.h1>
+          <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-2 sm:mb-3 leading-[1.1] tracking-tight">
+            <TextEffect 
+              per="word" 
+              as="h1" 
+              preset="slide"
+              className="text-white block"
+              delay={0.4}
+            >
+              INNOVATING YOUR
+            </TextEffect>
+            <TextEffect 
+              per="word" 
+              as="h1" 
+              preset="slide"
+              className="text-[#ddfe00] block"
+              delay={0.5}
+            >
+              DIGITAL
+            </TextEffect>
+            <TextEffect 
+              per="word" 
+              as="h1" 
+              preset="slide"
+              className="text-white block"
+              delay={0.6}
+            >
+              WORLD WITH US
+            </TextEffect>
+          </div>
 
           {/* Subtitle */}
           <motion.p

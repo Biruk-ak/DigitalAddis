@@ -6,7 +6,7 @@ import Link from 'next/link';
 export default function CTA() {
   return (
     <div className="w-full bg-black">
-      <section className="mx-auto max-w-7xl px-4 py-6 lg:px-8 lg:py-20 relative">
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 lg:py-20 relative">
         {/* Soft Radial Glow Behind Card */}
         <div 
           className="absolute inset-0 flex items-center justify-center pointer-events-none"
