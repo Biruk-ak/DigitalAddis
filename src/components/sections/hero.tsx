@@ -75,6 +75,9 @@ export default function Hero() {
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#ddfe00] opacity-[0.08] blur-[120px] rounded-full animate-pulse" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#ddfe00] opacity-[0.08] blur-[120px] rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
 
+      {/* Bottom Fade Out - Grid pattern fades out smoothly */}
+      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/70 to-transparent z-[5] pointer-events-none"></div>
+
       {/* Content Container */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-28 w-full flex flex-col items-center justify-center min-h-[calc(100vh-5rem)]">
         <div className="text-center w-full flex flex-col items-center">

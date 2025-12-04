@@ -14,6 +14,10 @@ interface Service {
   features: string[];
 }
 
+interface ServicesProps {
+  showViewMore?: boolean;
+}
+
 const services: Service[] = [
   {
     id: 1,
@@ -49,7 +53,7 @@ const services: Service[] = [
   },
 ];
 
-export default function Services() {
+export default function Services({ showViewMore = true }: ServicesProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -74,6 +78,36 @@ export default function Services() {
 
   return (
     <section className="relative py-20 lg:py-32 bg-[#0a0a0a] dark:bg-black overflow-hidden">
+      {/* Grid Pattern - Continuation from Hero section */}
+      <div
+        className="absolute top-0 left-0 right-0 h-64"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(221, 254, 0, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(221, 254, 0, 0.03) 1px, transparent 1px)
+          `,
+          backgroundSize: '60px 60px',
+          backgroundPosition: '0 0',
+          maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)',
+        }}
+      />
+      
+      {/* Secondary grid layer */}
+      <div
+        className="absolute top-0 left-0 right-0 h-64"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px)
+          `,
+          backgroundSize: '60px 60px',
+          backgroundPosition: '0 0',
+          maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)',
+        }}
+      />
+
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -95,13 +129,15 @@ export default function Services() {
           </div>
 
           {/* Right Side - View More Button */}
-          <Link
-            href="/services"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#ddfe00] text-black font-semibold rounded-lg hover:bg-[#c4e800] transition-colors duration-300 self-start sm:self-auto"
-          >
-            <span>View More</span>
-            <ArrowUpRight className="w-5 h-5" />
-          </Link>
+          {showViewMore && (
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#ddfe00] text-black font-semibold rounded-lg hover:bg-[#c4e800] transition-colors duration-300 self-start sm:self-auto"
+            >
+              <span>View More</span>
+              <ArrowUpRight className="w-5 h-5" />
+            </Link>
+          )}
         </motion.div>
 
         {/* Main Heading */}

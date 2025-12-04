@@ -1,12 +1,12 @@
 'use client';
 
 import { motion, Variants } from 'framer-motion';
-import { ReactNode } from 'react';
+import React, { ElementType } from 'react';
 
 interface TextEffectProps {
   children: string;
   per?: 'word' | 'character' | 'line';
-  as?: keyof JSX.IntrinsicElements;
+  as?: ElementType;
   preset?: 'slide' | 'fade' | 'scale' | 'blur';
   className?: string;
   delay?: number;
@@ -100,13 +100,17 @@ export function TextEffect({
   const customVariants = duration
     ? {
         ...selectedPreset,
-        visible: (i: number) => ({
-          ...selectedPreset.visible(i),
-          transition: {
-            ...selectedPreset.visible(i).transition,
-            duration,
-          },
-        }),
+        visible: (i: number) => {
+          const visibleFn = selectedPreset.visible as (i: number) => { opacity: number; transition: { delay: number; duration: number } };
+          const result = visibleFn(i);
+          return {
+            ...result,
+            transition: {
+              ...result.transition,
+              duration,
+            },
+          };
+        },
       }
     : selectedPreset;
 

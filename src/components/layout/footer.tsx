@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { TextShimmerWave } from '@/components/core/text-shimmer-wave';
 
 const data = {
   services: [
@@ -104,22 +105,20 @@ export default function Footer() {
               </p>
 
               {/* Email Subscription */}
-              <div className="flex items-center max-w-sm">
+              <div className="relative flex items-center max-w-sm">
                 <div className="relative flex-1">
-                  <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
-                    <Mail className="w-4 h-4 text-gray-400" />
-                  </div>
+                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none z-10" />
                   <input
                     type="email"
                     placeholder="Enter your email"
-                    className="w-full pl-10 pr-4 py-3 bg-[#1a1a1a]/50 border border-[#333333] rounded-l-full text-white placeholder-gray-400 text-sm focus:outline-none focus:border-[#ddfe00]"
+                    className="w-full pl-11 pr-14 py-3 bg-[#1a1a1a]/50 border border-[#333333] rounded-full text-white placeholder-gray-400 text-sm focus:outline-none focus:border-[#ddfe00]"
                   />
+                  <button className="absolute right-1 top-1/2 -translate-y-1/2 bg-[#ddfe00] hover:bg-[#c4e600] text-black p-2.5 rounded-full transition-colors">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6z" />
+                    </svg>
+                  </button>
                 </div>
-                <button className="bg-[#ddfe00] hover:bg-[#c4e600] text-black p-3 rounded-full -ml-2 transition-colors">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6z" />
-                  </svg>
-                </button>
               </div>
             </div>
 
@@ -224,18 +223,18 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Large Brand Name */}
-        <div className="w-full overflow-hidden py-8">
-          <h2 
-            className="text-[8vw] lg:text-[10vw] font-bold text-center tracking-tighter leading-none"
-            style={{
-              color: 'transparent',
-              WebkitTextStroke: '2px rgba(255, 255, 255, 0.15)',
-              textStroke: '2px rgba(255, 255, 255, 0.15)',
-            }}
+        {/* Large Brand Name with Shimmer Animation */}
+        <div className="w-full overflow-hidden py-8 flex justify-center">
+          <TextShimmerWave
+            className="text-[8vw] lg:text-[10vw] font-bold text-center tracking-tighter leading-none [--base-color:transparent] [--base-gradient-color:#ddfe00]"
+            duration={2}
+            spread={2}
+            zDistance={0.5}
+            scaleDistance={1.05}
+            rotateYDistance={10}
           >
-            DIGITALADDIS
-          </h2>
+            DIGITAL ADDIS
+          </TextShimmerWave>
         </div>
 
         {/* Bottom Bar */}

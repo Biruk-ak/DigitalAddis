@@ -8,8 +8,8 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-screen bg-white dark:bg-black">
-      <Services />
+    <div className="min-h-screen bg-[#0a0a0a] pt-20">
+      <Services showViewMore={false} />
     </div>
   );
 }

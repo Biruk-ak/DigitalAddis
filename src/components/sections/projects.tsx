@@ -145,7 +145,7 @@ export default function Projects() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-12 lg:mb-16 uppercase tracking-tight"
         >
-          EXPLORE OUR TOP PROJECT
+          EXPLORE OUR PROJECT
         </motion.h2>
 
         {/* Expandable Cards */}

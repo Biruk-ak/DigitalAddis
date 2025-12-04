@@ -23,8 +23,8 @@ export default function Navbar() {
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
     { href: '/services', label: 'Service' },
+    { href: '/projects', label: 'Projects' },
     { href: '/blog', label: 'Blog' },
-    // { href: '/contact', label: 'Contact' },
   ];
 
   return (

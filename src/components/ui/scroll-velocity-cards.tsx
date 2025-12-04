@@ -11,7 +11,7 @@ import {
   useAnimationFrame,
 } from 'framer-motion';
 
-function useElementWidth(ref: React.RefObject<HTMLElement>) {
+function useElementWidth(ref: React.RefObject<HTMLElement | null>) {
   const [width, setWidth] = useState(0);
 
   useLayoutEffect(() => {
@@ -29,7 +29,7 @@ function useElementWidth(ref: React.RefObject<HTMLElement>) {
 }
 
 interface ScrollVelocityCardsProps {
-  scrollContainerRef?: React.RefObject<HTMLElement>;
+  scrollContainerRef?: React.RefObject<HTMLElement | null>;
   children: React.ReactNode[];
   velocity?: number;
   damping?: number;
