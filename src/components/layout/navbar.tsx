@@ -130,12 +130,12 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-            isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out pointer-events-auto ${
+            isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
           }`}
         >
           <div className="px-4 sm:px-6 lg:px-8 pt-2">
-            <div className="max-w-7xl mx-auto py-4 space-y-2 bg-black/50 backdrop-blur-lg rounded-xl border border-white/5 px-4">
+            <div className="max-w-full lg:max-w-7xl mx-auto py-4 space-y-2 bg-black/50 backdrop-blur-lg rounded-xl border border-white/5 px-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
