@@ -43,7 +43,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-[calc(100vh-5rem)] flex flex-col items-center justify-center bg-gradient-to-b from-[#050505] to-[#0f0f0f] overflow-hidden"
+      className="relative min-h-[calc(100vh-5rem)] flex flex-col items-center justify-center bg-gradient-to-b from-[#050505] to-[#0f0f0f]"
     >
       {/* Grid Pattern Overlay - Small Squares - Full Coverage Including Navbar Area */}
       <div
@@ -203,62 +203,15 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Project Cards - Appears after scrolling */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mt-12 sm:mt-16"
-        >
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="group relative"
-            >
-              {/* Card Container */}
-              <div className="relative h-[280px] sm:h-[320px] lg:h-[360px] rounded-[20px] border border-[#2c2c2c] bg-gradient-to-br from-[#0a0a0a] to-[#050505] overflow-hidden transition-all duration-300 group-hover:border-[#ddfe00]/50 group-hover:shadow-[0_0_30px_rgba(221,254,0,0.2)]">
-                {/* Neon edge flicker effect (very light) */}
-                <div className="absolute inset-0 rounded-[20px] border border-[#ddfe00]/0 group-hover:border-[#ddfe00]/20 transition-all duration-500" />
-
-                {/* Glow on hover */}
-                <div className="absolute inset-0 bg-[#ddfe00]/0 group-hover:bg-[#ddfe00]/5 transition-all duration-300 blur-xl -z-10" />
-
-                {/* Image */}
-                <div className="relative w-full h-3/4 overflow-hidden">
-                  <motion.img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.5 }}
-                  />
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent" />
-                </div>
-
-                {/* Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-[#0a0a0a] to-transparent">
-                  <h3 className="text-white font-bold text-base mb-1.5 group-hover:text-[#ddfe00] transition-colors duration-300">
-                    {project.title}
-                  </h3>
-                  <p className="text-[#8b8b8b] text-xs leading-relaxed group-hover:text-[#cfcfcf] transition-colors duration-300">
-                    {project.subtitle}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Mobile Scrollable Cards (Alternative for very small screens) */}
-        <div className="lg:hidden mt-8 overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide">
-          <div className="flex gap-6 min-w-max">
+        {/* Project Cards - Horizontal Scrollable on all screens */}
+        <div className="w-screen relative left-1/2 -translate-x-1/2 mt-8 sm:mt-12 overflow-x-auto pb-4 px-4 scrollbar-hide">
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex gap-4 sm:gap-6 min-w-max"
+          >
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
@@ -267,9 +220,9 @@ export default function Hero() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -8, scale: 1.02 }}
-                className="group relative flex-shrink-0 w-[240px]"
+                className="group relative flex-shrink-0 w-[220px] sm:w-[260px] lg:w-[280px]"
               >
-                <div className="relative h-[280px] rounded-[20px] border border-[#2c2c2c] bg-gradient-to-br from-[#0a0a0a] to-[#050505] overflow-hidden transition-all duration-300 group-hover:border-[#ddfe00]/50 group-hover:shadow-[0_0_30px_rgba(221,254,0,0.2)]">
+                <div className="relative h-[260px] sm:h-[300px] lg:h-[340px] rounded-[20px] border border-[#2c2c2c] bg-gradient-to-br from-[#0a0a0a] to-[#050505] overflow-hidden transition-all duration-300 group-hover:border-[#ddfe00]/50 group-hover:shadow-[0_0_30px_rgba(221,254,0,0.2)]">
                   <div className="absolute inset-0 rounded-[20px] border border-[#ddfe00]/0 group-hover:border-[#ddfe00]/20 transition-all duration-500" />
                   <div className="absolute inset-0 bg-[#ddfe00]/0 group-hover:bg-[#ddfe00]/5 transition-all duration-300 blur-xl -z-10" />
                   <div className="relative w-full h-3/4 overflow-hidden">
@@ -283,7 +236,7 @@ export default function Hero() {
                     <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent" />
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-[#0a0a0a] to-transparent">
-                    <h3 className="text-white font-bold text-base mb-1.5 group-hover:text-[#ddfe00] transition-colors duration-300">
+                    <h3 className="text-white font-bold text-sm sm:text-base mb-1.5 group-hover:text-[#ddfe00] transition-colors duration-300">
                       {project.title}
                     </h3>
                     <p className="text-[#8b8b8b] text-xs leading-relaxed group-hover:text-[#cfcfcf] transition-colors duration-300">
@@ -293,7 +246,7 @@ export default function Hero() {
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
