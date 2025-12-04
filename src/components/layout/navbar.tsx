@@ -28,7 +28,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
+    <nav className="fixed top-0 left-0 right-0 z-50 pointer-events-none pt-[env(safe-area-inset-top)]">
       {/* Background Shape - Full width when scrolled, constrained when not */}
       <div 
         className={`fixed transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
@@ -48,29 +48,29 @@ export default function Navbar() {
       <div className={`fixed left-0 right-0 pointer-events-none transition-all duration-300 ${
         isScrolled ? 'top-0' : 'top-4'
       }`}>
-        <div className="relative w-full max-w-7xl mx-auto h-20 py-2 pointer-events-auto px-4 sm:px-6 lg:px-8">
-          {/* Logo - Left - Fixed Position */}
+        <div className="flex w-full max-w-full lg:max-w-7xl mx-auto h-20 py-2 pointer-events-auto px-4 sm:px-6 lg:px-8 items-center justify-between">
+          {/* Logo - Left */}
           <Link
             href="/"
-            className="absolute left-0 top-1/2 -translate-y-1/2 flex items-center space-x-2 group h-full z-10"
+            className="flex items-center space-x-2 group z-10 flex-shrink-0"
           >
             <Image 
               src="/dalogo.png" 
               alt="DigitalAddis Logo" 
               width={120}
               height={40}
-              // className="h-8 sm:h-10 lg:h-12 w-auto object-contain group-hover:opacity-80 transition-opacity duration-300"
+              className="w-[80px] sm:w-[100px] lg:w-[120px] h-auto"
               priority
             />
           </Link>
 
 
           {/* Navigation Links - Center (hidden on mobile) */}
-          <div className={`absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 h-full hidden md:flex items-center justify-center z-10 ${
-            !isScrolled ? 'rounded-full bg-black/50 backdrop-blur-lg shadow-xl shadow-[#ddfe00]/15 border border-[#ddfe00]/30 px-6 sm:px-8' : ''
+          <div className={`hidden md:flex items-center justify-center z-10 ${
+            !isScrolled ? 'rounded-full bg-black/50 backdrop-blur-lg shadow-xl shadow-[#ddfe00]/15 border border-[#ddfe00]/30 px-6 sm:px-8 py-3' : ''
           } transition-all duration-300`}>
             {/* Desktop Navigation */}
-            <div className="flex items-center justify-center space-x-1 h-full">
+            <div className="flex items-center justify-center space-x-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -92,8 +92,8 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Contact Button - Right - Fixed Position */}
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center gap-4 z-10">
+          {/* Contact Button & Mobile Menu - Right */}
+          <div className="flex items-center gap-4 z-10 flex-shrink-0">
             <Link
               href="/contact"
               className="hidden md:block px-6 py-2.5 bg-[#ddfe00] text-black font-semibold rounded-full hover:bg-[#ddfe00] hover:shadow-lg hover:shadow-[#ddfe00]/50 transition-shadow duration-300 transform hover:scale-105"
@@ -104,23 +104,23 @@ export default function Navbar() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-gray-300 hover:text-[#ddfe00] transition-colors duration-300"
+              className="flex md:hidden p-3 text-white hover:text-[#ddfe00] transition-colors duration-300 z-50"
               aria-label="Toggle menu"
             >
-              <div className="w-6 h-6 flex flex-col justify-center space-y-1.5">
+              <div className="w-7 h-7 flex flex-col justify-center space-y-1.5">
                 <span
-                  className={`block h-0.5 w-6 bg-current transition-all duration-300 ${
-                    isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''
+                  className={`block h-[3px] w-7 bg-current rounded transition-all duration-300 ${
+                    isMobileMenuOpen ? 'rotate-45 translate-y-[9px]' : ''
                   }`}
                 ></span>
                 <span
-                  className={`block h-0.5 w-6 bg-current transition-all duration-300 ${
+                  className={`block h-[3px] w-7 bg-current rounded transition-all duration-300 ${
                     isMobileMenuOpen ? 'opacity-0' : ''
                   }`}
                 ></span>
                 <span
-                  className={`block h-0.5 w-6 bg-current transition-all duration-300 ${
-                    isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
+                  className={`block h-[3px] w-7 bg-current rounded transition-all duration-300 ${
+                    isMobileMenuOpen ? '-rotate-45 -translate-y-[9px]' : ''
                   }`}
                 ></span>
               </div>

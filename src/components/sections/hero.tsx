@@ -204,7 +204,7 @@ export default function Hero() {
         </div>
 
         {/* Project Cards - Horizontal Scrollable on all screens */}
-        <div className="w-screen relative left-1/2 -translate-x-1/2 mt-8 sm:mt-12 overflow-x-auto pb-4 px-4 scrollbar-hide">
+        <div className="w-full mt-8 sm:mt-12 overflow-x-auto pb-4 px-4 scrollbar-hide">
           <motion.div 
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}

@@ -80,8 +80,11 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-body {
+html, body {
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+  position: relative;
 }
 
 /* Smooth scrolling */
