@@ -25,6 +25,10 @@ export type Card = {
   };
 };
 
+interface ProjectsProps {
+  showViewMore?: boolean;
+}
+
 const projects: Card[] = [
   {
     id: 1,
@@ -76,7 +80,7 @@ const projects: Card[] = [
   },
 ];
 
-export default function Projects() {
+export default function Projects({ showViewMore = true }: ProjectsProps) {
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -128,13 +132,15 @@ export default function Projects() {
           </div>
 
           {/* Right Side - View More Button */}
-          <Link
-            href="/projects"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#ddfe00] text-black font-semibold rounded-lg hover:bg-[#c4e800] transition-colors duration-300 self-start sm:self-auto"
-          >
-            <span>View More</span>
-            <ArrowUpRight className="w-5 h-5" />
-          </Link>
+          {showViewMore && (
+            <Link
+              href="/projects"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#ddfe00] text-black font-semibold rounded-lg hover:bg-[#c4e800] transition-colors duration-300 self-start sm:self-auto"
+            >
+              <span>View More</span>
+              <ArrowUpRight className="w-5 h-5" />
+            </Link>
+          )}
         </motion.div>
 
         {/* Main Heading */}
