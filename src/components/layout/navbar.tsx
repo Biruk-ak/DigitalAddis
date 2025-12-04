@@ -65,12 +65,12 @@ export default function Navbar() {
           </Link>
 
 
-          {/* Navigation Links - Center */}
-          <div className={`absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 h-full flex items-center justify-center z-10 ${
+          {/* Navigation Links - Center (hidden on mobile) */}
+          <div className={`absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 h-full hidden md:flex items-center justify-center z-10 ${
             !isScrolled ? 'rounded-full bg-black/50 backdrop-blur-lg shadow-xl shadow-[#ddfe00]/15 border border-[#ddfe00]/30 px-6 sm:px-8' : ''
           } transition-all duration-300`}>
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center justify-center space-x-1 h-full">
+            <div className="flex items-center justify-center space-x-1 h-full">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
