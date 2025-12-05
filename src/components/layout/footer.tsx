@@ -225,16 +225,36 @@ export default function Footer() {
 
         {/* Large Brand Name with Shimmer Animation */}
         <div className="w-full overflow-hidden py-8 flex justify-center">
-          <TextShimmerWave
-            className="text-[8vw] lg:text-[10vw] font-bold text-center tracking-tighter leading-none [--base-color:transparent] [--base-gradient-color:#ddfe00]"
-            duration={2}
-            spread={2}
-            zDistance={0.5}
-            scaleDistance={1.05}
-            rotateYDistance={10}
-          >
-            DIGITAL ADDIS
-          </TextShimmerWave>
+          {/* Mobile version - solid text with animation */}
+          <div className="block sm:hidden">
+            <span className="inline-flex text-[8vw] font-bold text-center tracking-tighter leading-none">
+              {'DIGITAL ADDIS'.split('').map((char, index) => (
+                <span
+                  key={index}
+                  className="inline-block text-[#ddfe00] animate-pulse"
+                  style={{
+                    animationDelay: `${index * 0.1}s`,
+                    animationDuration: '2s',
+                  }}
+                >
+                  {char === ' ' ? '\u00A0' : char}
+                </span>
+              ))}
+            </span>
+          </div>
+          {/* Desktop version - full animation */}
+          <div className="hidden sm:block">
+            <TextShimmerWave
+              className="text-[8vw] lg:text-[10vw] font-bold text-center tracking-tighter leading-none [--base-color:transparent] [--base-gradient-color:#ddfe00]"
+              duration={2}
+              spread={2}
+              zDistance={0.5}
+              scaleDistance={1.05}
+              rotateYDistance={10}
+            >
+              DIGITAL ADDIS
+            </TextShimmerWave>
+          </div>
         </div>
 
         {/* Bottom Bar */}

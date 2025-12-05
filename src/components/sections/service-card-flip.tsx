@@ -21,7 +21,7 @@ export default function ServiceCardFlip({
 
     return (
         <div
-            className="relative w-full max-w-[280px] h-[320px] group [perspective:2000px]"
+            className="relative w-full sm:max-w-[280px] h-[280px] sm:h-[320px] group [perspective:2000px]"
             onMouseEnter={() => setIsFlipped(true)}
             onMouseLeave={() => setIsFlipped(false)}
         >

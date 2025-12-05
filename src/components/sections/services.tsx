@@ -157,13 +157,13 @@ export default function Services({ showViewMore = true }: ServicesProps) {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 justify-items-center"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8"
         >
           {services.map((service) => (
             <motion.div
               key={service.id}
               variants={cardVariants}
-              className="w-full flex justify-center"
+              className="w-full"
             >
               <ServiceCardFlip
                 title={service.title}
