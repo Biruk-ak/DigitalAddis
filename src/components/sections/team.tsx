@@ -102,10 +102,10 @@ export default function Team() {
         </div>
 
         <div className="mt-12 md:mt-24">
-          <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-x-6 gap-y-8 sm:gap-y-12 grid-cols-2 lg:grid-cols-3">
             {members.map((member, index) => (
               <div key={member.id} className="group overflow-hidden">
-                <div className="relative h-96 w-full overflow-hidden rounded-md transition-all duration-500 group-hover:h-[22.5rem] group-hover:rounded-xl">
+                <div className="relative h-48 sm:h-80 md:h-96 w-full overflow-hidden rounded-md transition-all duration-500 group-hover:h-[11rem] sm:group-hover:h-[18.5rem] md:group-hover:h-[22.5rem] group-hover:rounded-xl bg-[#1a1a1a]">
                   <Image
                     className="h-full w-full rounded-md object-cover object-top grayscale transition-all duration-500 group-hover:grayscale-0"
                     src={member.image}
@@ -115,21 +115,21 @@ export default function Team() {
                     unoptimized
                   />
                 </div>
-                <div className="px-2 pt-2 sm:pb-0 sm:pt-4">
-                  <div className="flex justify-between">
-                    <h3 className="text-base font-medium text-white transition-all duration-500 group-hover:tracking-wider">
+                <div className="px-1 sm:px-2 pt-2 sm:pb-0 sm:pt-4">
+                  <div className="flex justify-between items-start gap-1">
+                    <h3 className="text-sm sm:text-base font-medium text-white transition-all duration-500 group-hover:tracking-wider leading-tight">
                       {member.name}
                     </h3>
-                    <span className="text-xs text-gray-400">_0{index + 1}</span>
+                    <span className="text-[10px] sm:text-xs text-gray-400 flex-shrink-0">_0{index + 1}</span>
                   </div>
                   <div className="mt-1 flex items-center justify-between">
-                    <span className="text-gray-400 inline-block translate-y-6 text-sm opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                    <span className="text-gray-400 inline-block translate-y-6 text-xs sm:text-sm opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
                       {member.role}
                     </span>
                     {member.socialMedia?.linktree && (
                       <Link
                         href={member.socialMedia.linktree}
-                        className="text-gray-400 inline-block translate-y-8 text-sm tracking-wide opacity-0 transition-all duration-500 hover:text-[#ddfe00] hover:underline group-hover:translate-y-0 group-hover:opacity-100 dark:group-hover:text-[#ddfe00]"
+                        className="text-gray-400 inline-block translate-y-8 text-xs sm:text-sm tracking-wide opacity-0 transition-all duration-500 hover:text-[#ddfe00] hover:underline group-hover:translate-y-0 group-hover:opacity-100 dark:group-hover:text-[#ddfe00]"
                       >
                         Linktree
                       </Link>
