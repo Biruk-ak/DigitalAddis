@@ -5,10 +5,10 @@ import { motion, useInView } from 'framer-motion';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
-import Earth from '@/components/ui/globe';
 import { SparklesCore } from '@/components/ui/sparkles';
 import { Label } from '@/components/ui/label';
 import { Check, Loader2 } from 'lucide-react';
+import Image from 'next/image';
 
 export default function ContactPage() {
   const [name, setName] = useState('');
@@ -183,13 +183,24 @@ export default function ContactPage() {
               <div className="flex flex-col items-center justify-center overflow-hidden">
                 <article className="relative mx-auto h-[350px] min-h-60 max-w-[450px] overflow-hidden rounded-3xl border bg-gradient-to-b from-[#ddfe00] to-[#ddfe00]/5 p-6 text-3xl tracking-tight text-black md:h-[450px] md:min-h-80 md:p-8 md:text-4xl md:leading-[1.05] lg:text-5xl">
                   Presenting you with the best UI possible.
-                  <div className="absolute -right-20 -bottom-20 z-10 mx-auto flex h-full w-full max-w-[300px] items-center justify-center transition-all duration-700 hover:scale-105 md:-right-28 md:-bottom-28 md:max-w-[550px]">
-                    <Earth
-                      scale={1.1}
-                      baseColor={[0.87, 1, 0]}
-                      markerColor={[0, 0, 0]}
-                      glowColor={[0.87, 1, 0]}
-                    />
+                  {/* Rotating Circular Logo */}
+                  <div className="absolute -right-10 -bottom-10 z-10 mx-auto flex h-full w-full max-w-[280px] items-center justify-center md:-right-16 md:-bottom-16 md:max-w-[400px]">
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{
+                        duration: 20,
+                        repeat: Infinity,
+                        ease: 'linear',
+                      }}
+                      className="relative w-[200px] h-[200px] md:w-[300px] md:h-[300px]"
+                    >
+                      <Image
+                        src="/digialcirulation.png"
+                        alt="Digital Addis Circular Logo"
+                        fill
+                        className="object-contain"
+                      />
+                    </motion.div>
                   </div>
                 </article>
               </div>

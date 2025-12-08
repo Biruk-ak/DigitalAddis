@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { TextEffect } from '@/components/core/text-effect';
+import CircularLogo from '@/components/ui/circular-logo';
 
 // Project card data
 const projects = [
@@ -185,20 +186,17 @@ export default function Hero() {
             A full-service digital agency delivering UI/UX design, web development, and branding that makes an impact.
           </motion.p>
 
-          {/* CTA Button */}
+          {/* Circular Logo */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.9 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.8 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
             className="mb-0"
           >
-            <Link
-              href="/contact"
-              className="group relative inline-flex items-center justify-center px-6 py-3 sm:px-10 sm:py-4 bg-[#ddfe00] text-black font-bold text-sm sm:text-base rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(221,254,0,0.6)]"
-            >
-              {/* Glow effect */}
-              <div className="absolute inset-0 rounded-full bg-[#ddfe00] blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300 -z-10" />
-              <span className="relative z-10 tracking-wide">BOOK A CALL</span>
+            <Link href="/contact" className="block hover:scale-105 transition-transform duration-300">
+              <CircularLogo size={200} className="sm:hidden" />
+              <CircularLogo size={280} className="hidden sm:block lg:hidden" />
+              <CircularLogo size={320} className="hidden lg:block" />
             </Link>
           </motion.div>
         </div>
