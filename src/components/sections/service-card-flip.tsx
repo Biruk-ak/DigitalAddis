@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { ArrowRight, Repeat2 } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 
 export interface ServiceCardFlipProps {
@@ -9,6 +10,7 @@ export interface ServiceCardFlipProps {
     subtitle?: string;
     description?: string;
     features?: string[];
+    image?: string;
 }
 
 export default function ServiceCardFlip({
@@ -16,6 +18,7 @@ export default function ServiceCardFlip({
     subtitle = "Service subtitle",
     description = "Service description",
     features = ["Feature 1", "Feature 2", "Feature 3", "Feature 4"],
+    image,
 }: ServiceCardFlipProps) {
     const [isFlipped, setIsFlipped] = useState(false);
 
@@ -49,27 +52,41 @@ export default function ServiceCardFlip({
                         isFlipped ? "opacity-0" : "opacity-100"
                     )}
                 >
-                    <div className="relative h-full overflow-hidden bg-gradient-to-b from-[#1a1a1a] to-[#0f0f0f]">
-                        <div className="absolute inset-0 flex items-start justify-center pt-24">
-                            <div className="relative w-[200px] h-[100px] flex items-center justify-center">
-                                {[...Array(10)].map((_, i) => (
-                                    <div
-                                        key={i}
-                                        className={cn(
-                                            "absolute w-[50px] h-[50px]",
-                                            "rounded-[140px]",
-                                            "animate-[scale_3s_linear_infinite]",
-                                            "opacity-0",
-                                            "shadow-[0_0_50px_rgba(221,254,0,0.5)]",
-                                            "group-hover:animate-[scale_2s_linear_infinite]"
-                                        )}
-                                        style={{
-                                            animationDelay: `${i * 0.3}s`,
-                                        }}
-                                    />
-                                ))}
+                    <div className="relative h-full overflow-hidden">
+                        {image ? (
+                            <div className="absolute inset-0 flex items-center justify-center bg-[#0f0f0f]">
+                                <Image
+                                    src={image}
+                                    alt={title}
+                                    fill
+                                    className="object-contain p-6 sm:p-8"
+                                    sizes="(max-width: 640px) 100vw, 360px"
+                                    priority={false}
+                                />
+                                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
                             </div>
-                        </div>
+                        ) : (
+                            <div className="absolute inset-0 flex items-start justify-center pt-24 bg-gradient-to-b from-[#1a1a1a] to-[#0f0f0f]">
+                                <div className="relative w-[200px] h-[100px] flex items-center justify-center">
+                                    {[...Array(10)].map((_, i) => (
+                                        <div
+                                            key={i}
+                                            className={cn(
+                                                "absolute w-[50px] h-[50px]",
+                                                "rounded-[140px]",
+                                                "animate-[scale_3s_linear_infinite]",
+                                                "opacity-0",
+                                                "shadow-[0_0_50px_rgba(221,254,0,0.5)]",
+                                                "group-hover:animate-[scale_2s_linear_infinite]"
+                                            )}
+                                            style={{
+                                                animationDelay: `${i * 0.3}s`,
+                                            }}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                        )}
                     </div>
 
                     <div className="absolute bottom-0 left-0 right-0 p-5">
@@ -78,7 +95,7 @@ export default function ServiceCardFlip({
                                 <h3 className="text-lg font-semibold text-white leading-snug tracking-tighter transition-all duration-500 ease-out-expo group-hover:translate-y-[-4px]">
                                     {title}
                                 </h3>
-                                <p className="text-sm text-gray-400 line-clamp-2 tracking-tight transition-all duration-500 ease-out-expo group-hover:translate-y-[-4px] delay-[50ms]">
+                                <p className="text-sm text-gray-300 line-clamp-2 tracking-tight transition-all duration-500 ease-out-expo group-hover:translate-y-[-4px] delay-[50ms]">
                                     {subtitle}
                                 </p>
                             </div>

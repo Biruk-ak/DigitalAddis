@@ -12,6 +12,7 @@ interface Service {
   subtitle: string;
   description: string;
   features: string[];
+  image?: string;
 }
 
 interface ServicesProps {
@@ -26,6 +27,7 @@ const services: Service[] = [
     subtitle: 'High-performance websites',
     description: 'High-performance, responsive websites built for speed, security, and scalability.',
     features: ['React & Next.js', 'Full-Stack Development', 'API Integration', 'Performance Optimization'],
+    image: '/card1.png',
   },
   {
     id: 2,
@@ -34,6 +36,7 @@ const services: Service[] = [
     subtitle: 'Stunning visual designs',
     description: 'Intuitive, visually stunning designs that enhance usability and actively engage users.',
     features: ['User Research', 'Wireframing', 'Prototyping', 'Design Systems'],
+    image: '/card2.png',
   },
   {
     id: 3,
@@ -42,6 +45,7 @@ const services: Service[] = [
     subtitle: 'Mobile applications',
     description: 'Robust, user-friendly mobile applications designed for seamless use on iOS and Android.',
     features: ['iOS Development', 'Android Development', 'Cross-Platform', 'App Store Optimization'],
+    image: '/card3.png',
   },
   {
     id: 4,
@@ -50,6 +54,7 @@ const services: Service[] = [
     subtitle: 'Unique brand identities',
     description: 'Unique brand identities that make your product stand out in the market.',
     features: ['Logo Design', 'Brand Strategy', 'Visual Identity', 'Brand Guidelines'],
+    image: '/card4.png',
   },
 ];
 
@@ -170,6 +175,7 @@ export default function Services({ showViewMore = true }: ServicesProps) {
                 subtitle={service.subtitle}
                 description={service.description}
                 features={service.features}
+                image={service.image}
               />
             </motion.div>
           ))}

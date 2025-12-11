@@ -71,19 +71,19 @@ export default function Hero() {
       <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-[#ddfe00] opacity-[0.08] blur-[150px] rounded-full" />
 
       {/* Content Container - Side by Side */}
-      <motion.div
+          <motion.div
         variants={containerVariants}
         initial="hidden"
         animate={isVisible ? 'visible' : 'hidden'}
         className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-24 md:pt-0"
-      >
+            >
         <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8 md:gap-12 lg:gap-16 min-h-[80vh]">
           {/* Left Side - Text Content */}
           <motion.div
             variants={textVariants}
             className="h-full flex flex-col justify-center text-center md:text-left"
           >
-            {/* Main Heading */}
+          {/* Main Heading */}
             <motion.h1
               variants={textVariants}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight mb-6"
@@ -93,13 +93,13 @@ export default function Hero() {
               <span className="text-white block">WORLD</span>
             </motion.h1>
 
-            {/* Subtitle */}
-            <motion.p
+          {/* Subtitle */}
+          <motion.p
               variants={textVariants}
               className="text-base sm:text-lg md:text-xl text-[#a0a0a0] max-w-xl mx-auto md:mx-0 leading-relaxed"
-            >
-              A full-service digital agency delivering UI/UX design, web development, and branding that makes an impact.
-            </motion.p>
+          >
+            A full-service digital agency delivering UI/UX design, web development, and branding that makes an impact.
+          </motion.p>
           </motion.div>
 
           {/* Right Side - Circular Logo */}
@@ -110,9 +110,9 @@ export default function Hero() {
             {/* Soft neon glow behind logo */}
             <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
               <div className="w-[320px] sm:w-[380px] md:w-[440px] lg:w-[500px] h-[320px] sm:h-[380px] md:h-[440px] lg:h-[500px] bg-[#ddfe00] opacity-20 blur-[110px] rounded-full mix-blend-screen" />
-            </div>
+        </div>
 
-            <motion.div
+        <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.4 }}
             >
@@ -122,9 +122,9 @@ export default function Hero() {
                 <CircularLogo size={341} className="hidden lg:block" />
               </Link>
             </motion.div>
-          </motion.div>
-        </div>
-      </motion.div>
+        </motion.div>
+                </div>
+              </motion.div>
     </section>
   );
 }
