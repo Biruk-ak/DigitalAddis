@@ -109,7 +109,7 @@ export default function BlogPage() {
           >
             {/* Page Header */}
             <motion.div variants={itemVariants} className="text-center mb-16 lg:mb-20">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 lg:mb-6">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 lg:mb-6 drop-shadow-[0_0_12px_rgba(221,254,0,0.28)]">
                 <span className="text-gray-900 dark:text-white">Our</span>{' '}
                 <span className="bg-gradient-to-r from-[#ddfe00] to-[#ddfe00] bg-clip-text text-transparent">
                   Blog
