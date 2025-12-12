@@ -27,7 +27,7 @@ const services: Service[] = [
     subtitle: 'High-performance websites',
     description: 'High-performance, responsive websites built for speed, security, and scalability.',
     features: ['React & Next.js', 'Full-Stack Development', 'API Integration', 'Performance Optimization'],
-    image: '/card1.png',
+    image: '/card5.png',
   },
   {
     id: 2,
@@ -45,7 +45,7 @@ const services: Service[] = [
     subtitle: 'Mobile applications',
     description: 'Robust, user-friendly mobile applications designed for seamless use on iOS and Android.',
     features: ['iOS Development', 'Android Development', 'Cross-Platform', 'App Store Optimization'],
-    image: '/card3.png',
+    image: '/card1.png',
   },
   {
     id: 4,
