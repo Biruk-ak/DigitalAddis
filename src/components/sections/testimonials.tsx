@@ -300,9 +300,9 @@ export default function Testimonials() {
                     TESTIMONIALS
                   </p>
                 </div>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-3xl xl:max-w-xs font-bold text-white mb-2 leading-tight uppercase tracking-tight">
-                  OUR CLIENTS SAY{' '}
-                  <span className="text-[#ddfe00]">ABOUT OUR AGENCY</span>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-3xl xl:max-w-4xs font-bold text-white mb-2 leading-tight uppercase tracking-tight">
+                  WHAT OUR CLIENTS SAY {' '}
+                  <span className="text-[#ddfe00]">ABOUT OUR COMPANY</span>
                 </h2>
               </div>
 

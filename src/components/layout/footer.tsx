@@ -30,8 +30,8 @@ const data = {
     { text: 'Projects', href: '/projects' },
     { text: 'Blog', href: '/blog' },
     { text: 'Contact', href: '/contact' },
-    { text: 'FAQ', href: '/faq' },
-    { text: 'Support', href: '/support' },
+    { text: 'services', href: '/services' },
+    // { text: 'Support', href: '/support' },
   ],
   specialized: [
     { text: 'E-Commerce Industry', href: '/services' },
@@ -55,7 +55,7 @@ const data = {
   company: {
     name: 'DigitalAddis',
     description:
-      'We imagine and build experiences, products and businesses that disrupt the status quo, win hearts and realize the future. Explore how we work',
+      'We imagine and build experiences, products, and businesses that disrupt the status quo, win hearts, and realize the future. Explore how we work.',
     logo: '/dalogo.png',
   },
 };
@@ -144,7 +144,7 @@ export default function Footer() {
             {/* Quick Link */}
             <div>
               <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-6">
-                Quick Link
+                Quick Links
               </h3>
               <ul className="space-y-3">
                 {data.quickLinks.map(({ text, href }) => (

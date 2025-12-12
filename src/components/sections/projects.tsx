@@ -138,7 +138,7 @@ export default function Projects({ showViewMore = true }: ProjectsProps) {
               <div className="w-4 h-4 border-2 border-black rounded-sm"></div>
             </div>
             <span className="text-[#ddfe00] text-sm font-semibold uppercase tracking-wider">
-              CASE STUDY
+              CASE STUDIES
             </span>
           </div>
 
@@ -162,7 +162,7 @@ export default function Projects({ showViewMore = true }: ProjectsProps) {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-12 lg:mb-16 uppercase tracking-tight"
         >
-          EXPLORE OUR PROJECT
+          EXPLORE OUR PROJECTS
         </motion.h2>
 
         {/* Expandable Cards */}

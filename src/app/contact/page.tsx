@@ -182,7 +182,7 @@ export default function ContactPage() {
             >
               <div className="flex flex-col items-center justify-center overflow-hidden">
                 <article className="relative mx-auto h-[350px] min-h-60 max-w-[450px] overflow-hidden rounded-3xl border bg-gradient-to-b from-[#ddfe00] to-[#ddfe00]/5 p-6 text-3xl tracking-tight text-black md:h-[450px] md:min-h-80 md:p-8 md:text-4xl md:leading-[1.05] lg:text-5xl">
-                  Presenting you with the best UI possible.
+                  Delivering the best possible products and experiences.
                   {/* Rotating Circular Logo */}
                   <div className="absolute -right-10 -bottom-10 z-10 mx-auto flex h-full w-full max-w-[280px] items-center justify-center md:-right-16 md:-bottom-16 md:max-w-[400px]">
                     <motion.div

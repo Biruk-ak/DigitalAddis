@@ -159,7 +159,7 @@ export default function Technologies() {
                 <div className="w-4 h-4 border-2 border-black rounded-sm"></div>
               </div>
               <span className="text-[#ddfe00] text-sm font-semibold uppercase tracking-wider">
-                WHAT WE USED TECHNOLOGY
+                THE TECHNOLOGY WE USE
               </span>
             </div>
             
