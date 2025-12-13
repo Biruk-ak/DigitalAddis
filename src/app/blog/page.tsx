@@ -92,6 +92,9 @@ export default function BlogPage() {
     },
   };
 
+  const featured = blogPosts[0];
+  const remainingPosts = blogPosts.slice(1);
+
   return (
     <div className="min-h-screen bg-white dark:bg-black">
       <section className="relative py-20 lg:py-32 bg-white dark:bg-black overflow-hidden transition-colors duration-300">
@@ -102,11 +105,7 @@ export default function BlogPage() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
+          <motion.div variants={containerVariants} initial="hidden" animate="visible">
             {/* Page Header */}
             <motion.div variants={itemVariants} className="text-center mb-16 lg:mb-20">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 lg:mb-6 drop-shadow-[0_0_12px_rgba(221,254,0,0.28)]">
@@ -121,9 +120,72 @@ export default function BlogPage() {
               </p>
             </motion.div>
 
+            {/* Featured Article */}
+            {featured && (
+              <motion.div
+                variants={itemVariants}
+                className="mb-16 lg:mb-20 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center rounded-3xl bg-gradient-to-br from-[#0a0f0a] via-[#0f160f] to-black p-6 sm:p-10 lg:p-14 border border-[#1f2b1f] shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
+              >
+                <div className="space-y-6">
+                  <div className="flex items-center gap-3 text-[#ddfe00]">
+                    <span className="text-xs font-semibold tracking-[0.16em] uppercase">Feature Article</span>
+                    <div className="flex items-center gap-2 text-sm text-gray-300">
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#ddfe00] inline-block" />
+                      <span className="flex items-center gap-1 text-gray-300">
+                        <span className="text-gray-300">{featured.readTime}</span>
+                      </span>
+                    </div>
+                  </div>
+
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white">
+                    {featured.title}
+                  </h2>
+
+                  <p className="text-lg text-gray-300 leading-relaxed">
+                    {featured.excerpt}
+                  </p>
+
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span className="inline-block px-3 py-1 text-xs font-semibold bg-[#ddfe00]/10 text-[#ddfe00] rounded-full">
+                      {featured.category}
+                    </span>
+                    <span className="text-sm text-gray-400">{featured.date}</span>
+                  </div>
+
+                  <Link
+                    href={`/blog/${featured.id}`}
+                    className="inline-flex items-center gap-2 px-5 py-3 bg-[#ddfe00] text-black font-semibold rounded-full shadow-[0_10px_30px_rgba(221,254,0,0.35)] hover:shadow-[0_12px_40px_rgba(221,254,0,0.45)] transition-all duration-300 w-fit"
+                  >
+                    Read More
+                    <span aria-hidden>→</span>
+                  </Link>
+                </div>
+
+                <div className="relative w-full">
+                  <div className="absolute inset-4 rounded-[28px] bg-[#ddfe00]/20 blur-[40px]"></div>
+                  <div className="relative overflow-hidden rounded-3xl border border-[#1f2b1f] shadow-2xl">
+                    <div className="aspect-[16/10] bg-gradient-to-br from-[#0a0f0a] to-[#0f1610]">
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="relative w-full h-full">
+                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(221,254,0,0.08),transparent_35%),radial-gradient(circle_at_70%_70%,rgba(221,254,0,0.12),transparent_45%)]" />
+                          <div className="absolute inset-8 rounded-2xl bg-black/30 border border-[#ddfe00]/20" />
+                          <div className="absolute inset-10 rounded-xl border border-[#ddfe00]/15" />
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="text-[#ddfe00] text-5xl sm:text-6xl font-black drop-shadow-[0_0_28px_rgba(221,254,0,0.5)]">
+                              Top 10
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+
             {/* Blog Posts Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-              {blogPosts.map((post) => (
+              {remainingPosts.map((post) => (
                 <motion.div
                   key={post.id}
                   variants={itemVariants}
