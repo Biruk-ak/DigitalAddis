@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import CircularLogo from '@/components/ui/circular-logo';
+import DotGrid from '@/components/DotGrid';
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
@@ -54,9 +55,23 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-[#050505] to-[#0f0f0f] overflow-hidden"
     >
+      <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
+        <DotGrid
+          dotSize={1}
+          gap={43}
+          baseColor="#f8fdb4"
+          activeColor="#ddfe00"
+          proximity={100}
+          shockRadius={250}
+          shockStrength={5}
+          resistance={750}
+          returnDuration={1.5}
+        />
+      </div>
+
       {/* Grid Pattern Overlay */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 pointer-events-none"
         style={{
           backgroundImage: `
             linear-gradient(rgba(221, 254, 0, 0.08) 1px, transparent 1px),
