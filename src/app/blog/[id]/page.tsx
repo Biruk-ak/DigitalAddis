@@ -4,7 +4,7 @@ import { motion, useScroll, useSpring } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Calendar, Clock, Eye, Share2, MessageCircle, Twitter, Linkedin, Facebook } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 // Mock data for the specific post (in a real app, this would come from a CMS or API)
 const post = {
@@ -18,7 +18,7 @@ const post = {
     author: {
         name: 'Biruk A.',
         role: 'Lead Designer',
-        avatar: '/team/biruk.jpg' // Placeholder
+        avatar: '/team/biruk.jpg'
     },
     content: [
         {
@@ -71,6 +71,8 @@ const post = {
     ]
 };
 
+const NAVBAR_HEIGHT = 80; // 5rem = 80px
+
 export default function BlogPostPage({ params }: { params: { id: string } }) {
     const { scrollYProgress } = useScroll();
     const scaleX = useSpring(scrollYProgress, {
@@ -80,6 +82,105 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
     });
 
     const [activeSection, setActiveSection] = useState<string>('');
+    const [isLocked, setIsLocked] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
+    const containerRef = useRef<HTMLDivElement>(null);
+    const middleColumnRef = useRef<HTMLDivElement>(null);
+    const lockPositionRef = useRef<number>(0);
+
+    // Detect mobile
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 1024);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    // Handle scroll locking logic
+    useEffect(() => {
+        if (isMobile) return;
+
+        const handleScroll = () => {
+            const container = containerRef.current;
+            const middleColumn = middleColumnRef.current;
+            if (!container || !middleColumn) return;
+
+            const containerRect = container.getBoundingClientRect();
+            const containerTop = containerRect.top;
+
+            // Check if we should lock
+            if (!isLocked && containerTop <= NAVBAR_HEIGHT) {
+                // Lock the scroll
+                lockPositionRef.current = window.scrollY;
+                setIsLocked(true);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [isMobile, isLocked]);
+
+    // Handle wheel events when locked
+    useEffect(() => {
+        if (isMobile || !isLocked) return;
+
+        const handleWheel = (e: WheelEvent) => {
+            const middleColumn = middleColumnRef.current;
+            if (!middleColumn) return;
+
+            const { scrollTop, scrollHeight, clientHeight } = middleColumn;
+            const atTop = scrollTop === 0;
+            const atBottom = scrollTop + clientHeight >= scrollHeight - 5;
+
+            // Scroll up at top -> unlock and allow page scroll
+            if (e.deltaY < 0 && atTop) {
+                setIsLocked(false);
+                return;
+            }
+
+            // Scroll down at bottom -> unlock and allow page scroll
+            if (e.deltaY > 0 && atBottom) {
+                setIsLocked(false);
+                return;
+            }
+
+            // Otherwise, scroll the middle column
+            e.preventDefault();
+            middleColumn.scrollTop += e.deltaY;
+        };
+
+        window.addEventListener('wheel', handleWheel, { passive: false });
+        return () => window.removeEventListener('wheel', handleWheel);
+    }, [isMobile, isLocked]);
+
+    // Lock body scroll when locked
+    useEffect(() => {
+        if (isMobile) return;
+
+        if (isLocked) {
+            document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${lockPositionRef.current}px`;
+            document.body.style.width = '100%';
+        } else {
+            const scrollY = lockPositionRef.current;
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            window.scrollTo(0, scrollY);
+        }
+
+        return () => {
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+        };
+    }, [isLocked, isMobile]);
 
     return (
         <div className="min-h-screen bg-white dark:bg-[#050505] text-gray-900 dark:text-gray-100 selection:bg-[#ddfe00] selection:text-black">
@@ -123,7 +224,6 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
                     >
                         <div className="flex items-center gap-2">
                             <div className="w-8 h-8 rounded-full bg-gray-700 overflow-hidden relative">
-                                {/* Placeholder avatar */}
                                 <div className="absolute inset-0 bg-gradient-to-tr from-gray-600 to-gray-500"></div>
                             </div>
                             <span className="text-gray-300 font-medium">By {post.author.name}</span>
@@ -147,13 +247,16 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
                 </div>
             </section>
 
-            {/* Main Content Layout */}
-            <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            {/* Main Content Layout with Scroll Lock */}
+            <div
+                ref={containerRef}
+                className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12"
+            >
+                <div className={`grid grid-cols-1 lg:grid-cols-12 gap-8 ${isLocked && !isMobile ? 'lg:h-[calc(100vh-5rem)]' : ''}`}>
 
-                    {/* Left Sidebar: Table of Contents */}
-                    <aside className="hidden lg:block lg:col-span-3">
-                        <div className="sticky top-32 space-y-8">
+                    {/* Left Sidebar: Table of Contents & Share */}
+                    <aside className={`hidden lg:flex lg:col-span-3 flex-col py-8 border-r border-white/5 pr-4 ${isLocked ? 'h-full overflow-hidden' : ''}`}>
+                        <div className="space-y-8">
                             <div className="p-6 rounded-2xl bg-[#0f110f] border border-white/5">
                                 <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
                                     Table of Contents
@@ -167,7 +270,19 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
                                                 ? 'bg-[#ddfe00]/10 text-[#ddfe00] font-medium translate-x-1'
                                                 : 'text-gray-400 hover:text-white hover:bg-white/5'
                                                 }`}
-                                            onClick={() => setActiveSection(item.id)}
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                setActiveSection(item.id);
+                                                const el = document.getElementById(item.id);
+                                                if (el && middleColumnRef.current) {
+                                                    const elTop = el.getBoundingClientRect().top;
+                                                    const containerTop = middleColumnRef.current.getBoundingClientRect().top;
+                                                    middleColumnRef.current.scrollTo({
+                                                        top: middleColumnRef.current.scrollTop + (elTop - containerTop) - 20,
+                                                        behavior: 'smooth'
+                                                    });
+                                                }
+                                            }}
                                         >
                                             {item.title}
                                         </a>
@@ -198,14 +313,17 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
                         </div>
                     </aside>
 
-                    {/* Center: Main Content */}
-                    <main className="lg:col-span-6">
+                    {/* Center: Main Content - Scrollable */}
+                    <main
+                        ref={middleColumnRef}
+                        className={`lg:col-span-6 py-8 px-2 md:px-0 ${isLocked && !isMobile ? 'h-full overflow-y-auto scrollbar-hide scroll-smooth' : ''}`}
+                    >
                         {/* Main Image */}
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.7 }}
-                            className="relative rounded-3xl overflow-hidden mb-12 aspect-video shadow-2xl border border-white/10 group"
+                            className="relative rounded-3xl overflow-hidden mb-12 aspect-video shadow-2xl border border-white/10 group bg-[#0a0f0a]"
                         >
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 transition-opacity duration-300"></div>
 
@@ -218,7 +336,7 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
                             />
                         </motion.div>
 
-                        <article className="max-w-none">
+                        <article className="max-w-none pb-32">
                             <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed font-light">
                                 Creating a seamless signup experience is crucial for any digital product. It is the gateway to your application, and if it is closed or hard to open, no one will see specifically what you have built inside.
                             </p>
@@ -226,7 +344,7 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
                             {post.content.map((block, index) => {
                                 if (block.type === 'heading') {
                                     return (
-                                        <h2 key={index} id={block.id} className="text-2xl md:text-3xl font-bold text-white mt-12 mb-6 scroll-mt-32 flex items-center gap-2 group">
+                                        <h2 key={index} id={block.id} className="text-2xl md:text-3xl font-bold text-white mt-12 mb-6 scroll-mt-8 flex items-center gap-2 group">
                                             <span className="text-[#ddfe00] opacity-0 group-hover:opacity-100 transition-opacity -ml-6 mr-2 hidden lg:inline-block">#</span>
                                             {block.text}
                                         </h2>
@@ -267,7 +385,7 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
                             </div>
                         </article>
 
-                        <div className="mt-16 pt-8 border-t border-white/10 flex justify-between items-center">
+                        <div className="mt-8 pt-8 border-t border-white/10 flex justify-between items-center">
                             <Link href="/blog" className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
                                 <ArrowLeft size={20} />
                                 <span>Back to Blog</span>
@@ -275,9 +393,9 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
                         </div>
                     </main>
 
-                    {/* Right Sidebar: CTA */}
-                    <aside className="hidden lg:block lg:col-span-3">
-                        <div className="sticky top-32 space-y-8">
+                    {/* Right Sidebar: CTA & Newsletter */}
+                    <aside className={`hidden lg:flex lg:col-span-3 flex-col py-8 border-l border-white/5 pl-4 ${isLocked ? 'h-full overflow-hidden' : ''}`}>
+                        <div className="space-y-8">
                             {/* CTA Card */}
                             <div className="p-8 rounded-3xl bg-[#0a0f0a] border border-[#ddfe00]/30 relative overflow-hidden group">
                                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,#ddfe0020,transparent_60%)] group-hover:opacity-70 transition-opacity"></div>

@@ -90,7 +90,7 @@ export default function Hero() {
         variants={containerVariants}
         initial="hidden"
         animate={isVisible ? 'visible' : 'hidden'}
-        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-12 md:pt-0"
+        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-24 md:pt-12"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-4 md:gap-12 lg:gap-16 md:min-h-[80vh]">
           {/* Left Side - Text Content */}
@@ -117,7 +117,7 @@ export default function Hero() {
             </motion.p>
           </motion.div>
 
-          {/* Right Side - Circular Logo */}
+          {/* Right Side - Circular Logo with Girl Image */}
           <motion.div
             variants={imageVariants}
             className="flex-1 md:h-full flex items-center justify-center relative order-1 md:order-2"
@@ -130,11 +130,24 @@ export default function Hero() {
             <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.4 }}
+              className="relative"
             >
-              <Link href="/contact" className="block">
-                <CircularLogo size={221} className="md:hidden" />
-                <CircularLogo size={281} className="hidden md:block lg:hidden" />
-                <CircularLogo size={341} className="hidden lg:block" />
+              <Link href="/contact" className="block relative">
+                {/* Circular Logo Background */}
+                <div className="relative">
+                  <CircularLogo size={221} className="md:hidden" />
+                  <CircularLogo size={281} className="hidden md:block lg:hidden" />
+                  <CircularLogo size={341} className="hidden lg:block" />
+
+                  {/* Girl Image - Positioned to align with Contact Button */}
+                  <div className="absolute top-[10%] md:top-[1%] -right-20 md:-right-32 lg:-right-40 flex items-end justify-end">
+                    <img
+                      src="/girl2.png"
+                      alt="Digital Innovation"
+                      className="w-[200px] h-auto md:w-[250px] lg:w-[300px] object-contain drop-shadow-2xl"
+                    />
+                  </div>
+                </div>
               </Link>
             </motion.div>
           </motion.div>
