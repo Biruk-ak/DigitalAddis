@@ -27,21 +27,25 @@ interface Testimonial {
 
 const clients: Client[] = [
   { id: 1, name: 'Oromia Bank', logo: '/brands/oromia.png' },
-  { id: 2, name: 'Telebirr', logo: '/brands/telebirr.png' },
-  { id: 3, name: 'Wegagen Bank', logo: '/brands/wegagenbank.png' },
-  { id: 4, name: 'Tsehay Bank', logo: '/brands/tsehaybank.png' },
-  { id: 5, name: 'Ethio Telecom', logo: '/brands/tele.png' },
+  { id: 2, name: 'Telebirr', logo: '/brands/tele birr.png' },
+  { id: 3, name: 'Wegagen Bank', logo: '/brands/wegagen benk.png' },
+  { id: 4, name: 'Tsehay Bank', logo: '/brands/tsehay bank.png' },
+  { id: 5, name: 'Ethio Telecom', logo: '/brands/ethiotele.png' },
   { id: 6, name: 'Cooperative Bank', logo: '/brands/coop.png' },
-  { id: 7, name: 'Hibret Bank', logo: '/brands/hibret.png' },
-  { id: 8, name: 'Abay Bank', logo: '/brands/abaybank.png' },
+  { id: 7, name: 'Hibret Bank', logo: '/brands/amhara bank.png' },
+  { id: 8, name: 'Abay Bank', logo: '/brands/abayy bankf.png' },
   { id: 9, name: 'CTI', logo: '/brands/cti.png' },
   { id: 10, name: 'SafeZone', logo: '/brands/safezone.png' },
   { id: 11, name: 'Hub Addis', logo: '/brands/hubaddis.png' },
-  { id: 12, name: 'Amara Bank', logo: '/brands/amarabank.png' },
-  { id: 13, name: 'Ahadu Bank', logo: '/brands/ahadubank.png' },
+  { id: 12, name: 'Amara Bank', logo: '/brands/amhara bank.png' },
+  { id: 13, name: 'Ahadu Bank', logo: '/brands/abna bank.png' },
   { id: 14, name: 'Bynna Bank', logo: '/brands/bynnabank.png' },
   { id: 15, name: "Kaldi's Coffee", logo: '/brands/kaldi\'s.png' },
   { id: 16, name: 'NBC', logo: '/brands/nbc.png' },
+  { id: 17, name: 'fdre', logo: '/brands/fdre.png' },
+  { id: 18, name: 'foreign minister', logo: '/brands/foreign minister.png' },
+  { id: 19, name: 'signature', logo: '/brands/signature.png' },
+  { id: 20, name: 'signature f', logo: '/brands/signature f.png' },
 ];
 
 const testimonials: Testimonial[] = [
@@ -182,17 +186,17 @@ export default function Testimonials() {
                   <div className="relative w-44 h-32 lg:w-64 lg:h-40 flex items-center justify-center mx-3">
                     {/* Glow Effect on Hover */}
                     <div className="absolute inset-0 bg-[#ddfe00]/0 group-hover:bg-[#ddfe00]/10 rounded-xl blur-xl transition-all duration-300"></div>
-                    
+
                     {/* Card Container */}
                     <div className="relative w-full h-full border border-gray-800/50 rounded-xl flex items-center justify-center p-4 transition-all duration-300 group-hover:border-[#ddfe00]/50 group-hover:brightness-110">
                       {/* Client Logo */}
-                      <Image 
-                        src={client.logo} 
-                        alt={client.name} 
+                      <Image
+                        src={client.logo}
+                        alt={client.name}
                         fill
                         className="object-contain p-1 relative z-10"
                       />
-                      
+
                       {/* Glow on Hover */}
                       <div className="absolute inset-0 rounded-xl bg-[#ddfe00]/0 group-hover:bg-[#ddfe00]/5 transition-all duration-300 blur-sm"></div>
                     </div>
@@ -212,17 +216,17 @@ export default function Testimonials() {
                   <div className="relative w-44 h-32 lg:w-64 lg:h-40 flex items-center justify-center mx-3">
                     {/* Glow Effect on Hover */}
                     <div className="absolute inset-0 bg-[#ddfe00]/0 group-hover:bg-[#ddfe00]/10 rounded-xl blur-xl transition-all duration-300"></div>
-                    
+
                     {/* Card Container */}
                     <div className="relative w-full h-full border border-gray-800/50 rounded-xl flex items-center justify-center p-4 transition-all duration-300 group-hover:border-[#ddfe00]/50 group-hover:brightness-110">
                       {/* Client Logo */}
-                      <Image 
-                        src={client.logo} 
-                        alt={client.name} 
+                      <Image
+                        src={client.logo}
+                        alt={client.name}
                         fill
                         className="object-contain p-1 relative z-10"
                       />
-                      
+
                       {/* Glow on Hover */}
                       <div className="absolute inset-0 rounded-xl bg-[#ddfe00]/0 group-hover:bg-[#ddfe00]/5 transition-all duration-300 blur-sm"></div>
                     </div>
@@ -242,8 +246,8 @@ export default function Testimonials() {
             initial={{ opacity: 0, x: -100, scale: 0.95 }}
             whileInView={{ opacity: 1, x: 0, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ 
-              duration: 1.2, 
+            transition={{
+              duration: 1.2,
               ease: [0.25, 0.1, 0.25, 1],
               opacity: { duration: 0.8 },
               x: { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] },
@@ -255,14 +259,14 @@ export default function Testimonials() {
             <div className="relative w-full h-full flex flex-col">
               {/* Neon Blurred Glow Behind Image */}
               <div className="absolute inset-0 -z-10 flex items-center justify-center">
-                <div 
+                <div
                   className="w-[80%] h-[80%] rounded-full opacity-40 blur-3xl"
                   style={{
                     background: 'radial-gradient(circle, rgba(221, 254, 0, 0.6) 0%, rgba(221, 254, 0, 0.3) 50%, transparent 100%)',
                   }}
                 />
               </div>
-              
+
               <div className="relative w-full h-full z-10">
                 <img
                   src="/aman.png"
@@ -280,8 +284,8 @@ export default function Testimonials() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ 
-                duration: 0.8, 
+              transition={{
+                duration: 0.8,
                 delay: 0.2,
                 ease: [0.25, 0.1, 0.25, 1],
                 opacity: { duration: 0.6 },
@@ -337,8 +341,8 @@ export default function Testimonials() {
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -50 }}
-                    transition={{ 
-                      duration: 0.7, 
+                    transition={{
+                      duration: 0.7,
                       ease: [0.25, 0.1, 0.25, 1],
                       opacity: { duration: 0.5 },
                       x: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }
@@ -350,17 +354,17 @@ export default function Testimonials() {
                         key={testimonial.id}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ 
-                          delay: index * 0.1, 
+                        transition={{
+                          delay: index * 0.1,
                           duration: 0.6,
                           ease: [0.25, 0.1, 0.25, 1],
                           opacity: { duration: 0.5 },
                           y: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }
                         }}
-                        whileHover={{ 
-                          scale: 1.02, 
+                        whileHover={{
+                          scale: 1.02,
                           y: -5,
-                          transition: { 
+                          transition: {
                             duration: 0.3,
                             ease: [0.25, 0.1, 0.25, 1]
                           }
@@ -404,11 +408,10 @@ export default function Testimonials() {
                               <Star
                                 key={i}
                                 size={14}
-                                className={`${
-                                  i < testimonial.rating
-                                    ? 'fill-[#ddfe00] text-[#ddfe00]'
-                                    : 'fill-gray-800 text-gray-800'
-                                }`}
+                                className={`${i < testimonial.rating
+                                  ? 'fill-[#ddfe00] text-[#ddfe00]'
+                                  : 'fill-gray-800 text-gray-800'
+                                  }`}
                               />
                             ))}
                             {testimonial.rating === 5.0 && (
@@ -428,11 +431,10 @@ export default function Testimonials() {
                   <button
                     key={index}
                     onClick={() => setCurrentIndex(index)}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      index === currentIndex
-                        ? 'w-8 bg-[#ddfe00]'
-                        : 'w-2 bg-[#2c2c2c] hover:bg-[#ddfe00]/50'
-                    }`}
+                    className={`h-2 rounded-full transition-all duration-300 ${index === currentIndex
+                      ? 'w-8 bg-[#ddfe00]'
+                      : 'w-2 bg-[#2c2c2c] hover:bg-[#ddfe00]/50'
+                      }`}
                     aria-label={`Go to slide ${index + 1}`}
                   />
                 ))}

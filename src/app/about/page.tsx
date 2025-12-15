@@ -37,13 +37,10 @@ export default function AboutPage() {
                 Our Mission
               </h2>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                At DigitalAddis, we are dedicated to transforming businesses through
-                cutting-edge digital solutions. We combine creative excellence
-                with technical expertise to deliver results that matter.
-              </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                Our mission is to empower businesses of all sizes with the tools
-                and strategies they need to thrive in the digital landscape.
+                At Digital Addis, our mission is to deliver secure, innovative, and future ready digital
+                solutions that drive real transformation. We combine global standards with local
+                expertise to empower organizations of all sizes with the tools, systems and skills
+                they need to thrive in the digital age.
               </p>
             </div>
 
@@ -53,14 +50,11 @@ export default function AboutPage() {
                 Our Vision
               </h2>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                We envision a future where every business can leverage the power
-                of digital technology to reach their full potential. Through
-                innovation, collaboration, and excellence, we strive to be the
-                leading digital agency in the region.
-              </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                We believe in building long-term partnerships with our clients,
-                helping them grow and succeed in an ever-evolving digital world.
+                We envision becoming Ethiopia’s leading IT company and one of Africa’s most
+                trusted providers of cybersecurity, smart infrastructure and digital innovation.
+                Through excellence, integrity, and continuous improvement, we aim to build long
+                term partnerships that help industries, governments and communities grow in a
+                rapidly evolving digital world.
               </p>
             </div>
           </div>
@@ -75,17 +69,17 @@ export default function AboutPage() {
                 {
                   title: 'Innovation',
                   description:
-                    'We stay ahead of the curve with the latest technologies and creative approaches.',
+                    'We push boundaries to deliver modern, future focused solutions.',
                 },
                 {
                   title: 'Excellence',
                   description:
-                    'We are committed to delivering the highest quality work in every project.',
+                    'We commit to quality, reliability and high impact results',
                 },
                 {
                   title: 'Integrity',
                   description:
-                    'We build trust through transparency, honesty, and ethical practices.',
+                    'We operate with transparency, trust and responsibility in everything we do.',
                 },
               ].map((value, index) => (
                 <div
