@@ -90,9 +90,9 @@ export default function Hero() {
         variants={containerVariants}
         initial="hidden"
         animate={isVisible ? 'visible' : 'hidden'}
-        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-24 md:pt-12"
+        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-6 md:pt-12"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-4 md:gap-12 lg:gap-16 md:min-h-[80vh]">
+        <div className="grid grid-cols-1 md:grid-cols-2 items-start md:items-center gap-4 md:gap-12 lg:gap-16 md:min-h-[80vh]">
           {/* Left Side - Text Content */}
           <motion.div
             variants={textVariants}
@@ -120,7 +120,7 @@ export default function Hero() {
           {/* Right Side - Circular Logo with Girl Image */}
           <motion.div
             variants={imageVariants}
-            className="flex-1 md:h-full flex items-center justify-center relative order-1 md:order-2"
+            className="flex-1 md:h-full flex items-start md:items-center justify-center relative order-1 md:order-2 mb-8 md:mb-0"
           >
             {/* Soft neon glow behind logo */}
             <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
@@ -140,11 +140,11 @@ export default function Hero() {
                   <CircularLogo size={341} className="hidden lg:block" />
 
                   {/* Girl Image - Positioned to align with Contact Button */}
-                  <div className="absolute top-[10%] md:top-[1%] -right-20 md:-right-32 lg:-right-40 flex items-end justify-end">
+                  <div className="absolute top-[10%] md:top-[1%] -right-12 md:-right-32 lg:-right-40 flex items-end justify-end">
                     <img
                       src="/girl2.png"
                       alt="Digital Innovation"
-                      className="w-[200px] h-auto md:w-[250px] lg:w-[300px] object-contain drop-shadow-2xl"
+                      className="w-[140px] h-auto md:w-[250px] lg:w-[300px] object-contain drop-shadow-2xl"
                     />
                   </div>
                 </div>
