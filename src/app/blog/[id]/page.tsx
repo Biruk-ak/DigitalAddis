@@ -4,7 +4,7 @@ import { motion, useScroll, useSpring } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Calendar, Clock, Eye, Share2, MessageCircle, Twitter, Linkedin, Facebook } from 'lucide-react';
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState } from 'react';
 
 // Mock data for the specific post (in a real app, this would come from a CMS or API)
 const post = {
@@ -71,7 +71,7 @@ const post = {
     ]
 };
 
-const NAVBAR_HEIGHT = 80; // 5rem = 80px
+const NAVBAR_HEIGHT = 80;
 
 export default function BlogPostPage({ params }: { params: { id: string } }) {
     const { scrollYProgress } = useScroll();
@@ -82,105 +82,6 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
     });
 
     const [activeSection, setActiveSection] = useState<string>('');
-    const [isLocked, setIsLocked] = useState(false);
-    const [isMobile, setIsMobile] = useState(false);
-
-    const containerRef = useRef<HTMLDivElement>(null);
-    const middleColumnRef = useRef<HTMLDivElement>(null);
-    const lockPositionRef = useRef<number>(0);
-
-    // Detect mobile
-    useEffect(() => {
-        const checkMobile = () => {
-            setIsMobile(window.innerWidth < 1024);
-        };
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
-        return () => window.removeEventListener('resize', checkMobile);
-    }, []);
-
-    // Handle scroll locking logic
-    useEffect(() => {
-        if (isMobile) return;
-
-        const handleScroll = () => {
-            const container = containerRef.current;
-            const middleColumn = middleColumnRef.current;
-            if (!container || !middleColumn) return;
-
-            const containerRect = container.getBoundingClientRect();
-            const containerTop = containerRect.top;
-
-            // Check if we should lock
-            if (!isLocked && containerTop <= NAVBAR_HEIGHT) {
-                // Lock the scroll
-                lockPositionRef.current = window.scrollY;
-                setIsLocked(true);
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, [isMobile, isLocked]);
-
-    // Handle wheel events when locked
-    useEffect(() => {
-        if (isMobile || !isLocked) return;
-
-        const handleWheel = (e: WheelEvent) => {
-            const middleColumn = middleColumnRef.current;
-            if (!middleColumn) return;
-
-            const { scrollTop, scrollHeight, clientHeight } = middleColumn;
-            const atTop = scrollTop === 0;
-            const atBottom = scrollTop + clientHeight >= scrollHeight - 5;
-
-            // Scroll up at top -> unlock and allow page scroll
-            if (e.deltaY < 0 && atTop) {
-                setIsLocked(false);
-                return;
-            }
-
-            // Scroll down at bottom -> unlock and allow page scroll
-            if (e.deltaY > 0 && atBottom) {
-                setIsLocked(false);
-                return;
-            }
-
-            // Otherwise, scroll the middle column
-            e.preventDefault();
-            middleColumn.scrollTop += e.deltaY;
-        };
-
-        window.addEventListener('wheel', handleWheel, { passive: false });
-        return () => window.removeEventListener('wheel', handleWheel);
-    }, [isMobile, isLocked]);
-
-    // Lock body scroll when locked
-    useEffect(() => {
-        if (isMobile) return;
-
-        if (isLocked) {
-            document.body.style.overflow = 'hidden';
-            document.body.style.position = 'fixed';
-            document.body.style.top = `-${lockPositionRef.current}px`;
-            document.body.style.width = '100%';
-        } else {
-            const scrollY = lockPositionRef.current;
-            document.body.style.overflow = '';
-            document.body.style.position = '';
-            document.body.style.top = '';
-            document.body.style.width = '';
-            window.scrollTo(0, scrollY);
-        }
-
-        return () => {
-            document.body.style.overflow = '';
-            document.body.style.position = '';
-            document.body.style.top = '';
-            document.body.style.width = '';
-        };
-    }, [isLocked, isMobile]);
 
     return (
         <div className="min-h-screen bg-white dark:bg-[#050505] text-gray-900 dark:text-gray-100 selection:bg-[#ddfe00] selection:text-black">
@@ -247,15 +148,12 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
                 </div>
             </section>
 
-            {/* Main Content Layout with Scroll Lock */}
-            <div
-                ref={containerRef}
-                className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12"
-            >
-                <div className={`grid grid-cols-1 lg:grid-cols-12 gap-8 ${isLocked && !isMobile ? 'lg:h-[calc(100vh-5rem)]' : ''}`}>
+            {/* Main Content Layout */}
+            <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
                     {/* Left Sidebar: Table of Contents & Share */}
-                    <aside className={`hidden lg:flex lg:col-span-3 flex-col py-8 border-r border-white/5 pr-4 ${isLocked ? 'h-full overflow-hidden' : ''}`}>
+                    <aside className="hidden lg:flex lg:col-span-3 flex-col py-8 border-r border-white/5 pr-4 sticky top-24 max-h-[calc(100vh-6rem)] overflow-y-auto scrollbar-hide">
                         <div className="space-y-8">
                             <div className="p-6 rounded-2xl bg-[#0f110f] border border-white/5">
                                 <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
@@ -274,11 +172,11 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
                                                 e.preventDefault();
                                                 setActiveSection(item.id);
                                                 const el = document.getElementById(item.id);
-                                                if (el && middleColumnRef.current) {
-                                                    const elTop = el.getBoundingClientRect().top;
-                                                    const containerTop = middleColumnRef.current.getBoundingClientRect().top;
-                                                    middleColumnRef.current.scrollTo({
-                                                        top: middleColumnRef.current.scrollTop + (elTop - containerTop) - 20,
+                                                if (el) {
+                                                    const navHeight = 100; // Offset for fixed header if any
+                                                    const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+                                                    window.scrollTo({
+                                                        top: elementPosition - navHeight,
                                                         behavior: 'smooth'
                                                     });
                                                 }
@@ -314,10 +212,7 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
                     </aside>
 
                     {/* Center: Main Content - Scrollable */}
-                    <main
-                        ref={middleColumnRef}
-                        className={`lg:col-span-6 py-8 px-2 md:px-0 ${isLocked && !isMobile ? 'h-full overflow-y-auto scrollbar-hide scroll-smooth' : ''}`}
-                    >
+                    <main className="lg:col-span-6 py-8 px-2 md:px-0">
                         {/* Main Image */}
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
@@ -394,7 +289,7 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
                     </main>
 
                     {/* Right Sidebar: CTA & Newsletter */}
-                    <aside className={`hidden lg:flex lg:col-span-3 flex-col py-8 border-l border-white/5 pl-4 ${isLocked ? 'h-full overflow-hidden' : ''}`}>
+                    <aside className="hidden lg:flex lg:col-span-3 flex-col py-8 border-l border-white/5 pl-4 sticky top-24 max-h-[calc(100vh-6rem)] overflow-y-auto scrollbar-hide">
                         <div className="space-y-8">
                             {/* CTA Card */}
                             <div className="p-8 rounded-3xl bg-[#0a0f0a] border border-[#ddfe00]/30 relative overflow-hidden group">

@@ -5,7 +5,7 @@ import Technologies from '@/components/sections/technologies';
 import Team from '@/components/sections/team';
 import Testimonials from '@/components/sections/testimonials';
 import CTA from '@/components/sections/cta';
-import Blog from '@/components/sections/blog';
+
 
 export default function Home() {
   return (
@@ -16,7 +16,7 @@ export default function Home() {
       <Technologies />
       <Team />
       <Testimonials />
-      <Blog />
+
       {/* <CTA /> */}
     </div>
   );
