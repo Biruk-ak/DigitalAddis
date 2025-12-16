@@ -95,13 +95,7 @@ export default function Projects({ showViewMore = true }: ProjectsProps) {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  useEffect(() => {
-    if (scrollRef.current) {
-      const scrollWidth = scrollRef.current.scrollWidth;
-      const clientWidth = scrollRef.current.clientWidth;
-      scrollRef.current.scrollLeft = (scrollWidth - clientWidth) / 2;
-    }
-  }, []);
+
 
   const handleCardClick = (id: number) => {
     if (selectedCard === id) {
@@ -168,11 +162,12 @@ export default function Projects({ showViewMore = true }: ProjectsProps) {
         {/* Expandable Cards */}
         <div className={`flex w-full flex-col gap-4 ${!isMobile ? 'overflow-hidden' : ''}`}>
           <div
-            className={`scrollbar-hide flex overflow-x-auto pt-4 pb-8 -mx-4 px-4 ${!isMobile ? 'mx-auto' : ''}`}
+            className={`scrollbar-hide flex overflow-x-auto pt-4 pb-8 ${isMobile ? '-mx-4 px-4 gap-4' : 'gap-5 w-full'
+              }`}
             ref={scrollRef}
             style={{
               scrollSnapType: 'x mandatory',
-              scrollPaddingLeft: isMobile ? '16px' : '20%',
+              scrollPaddingLeft: isMobile ? '16px' : '0px',
             }}
           >
             {projects.map((card) => (
@@ -181,9 +176,9 @@ export default function Projects({ showViewMore = true }: ProjectsProps) {
                 animate={
                   isMobile
                     ? { height: selectedCard === card.id ? '520px' : '260px' }
-                    : { width: selectedCard === card.id ? '500px' : '200px' }
+                    : { flex: selectedCard === card.id ? 3 : 1 }
                 }
-                className={`relative mr-4 shrink-0 cursor-pointer overflow-hidden rounded-2xl border border-gray-800 bg-[#0f0f0f] shadow-lg ${isMobile ? 'w-[320px]' : 'h-[300px]'
+                className={`relative shrink-0 cursor-pointer overflow-hidden rounded-2xl border border-gray-800 bg-[#0f0f0f] shadow-lg ${isMobile ? 'w-[320px] mr-4' : 'h-[300px]'
                   }`}
                 data-card-id={card.id}
                 layout
@@ -200,7 +195,7 @@ export default function Projects({ showViewMore = true }: ProjectsProps) {
                 }}
               >
                 {/* Image Section */}
-                <div className={`relative ${isMobile ? 'h-[260px] w-full' : 'h-full w-[200px]'}`}>
+                <div className={`relative ${isMobile ? 'h-[260px] w-full' : 'h-full w-full'}`}>
                   <Image
                     alt={card.title}
                     className="h-full w-full object-cover"
@@ -238,7 +233,7 @@ export default function Projects({ showViewMore = true }: ProjectsProps) {
                       animate={
                         isMobile
                           ? { height: 'auto', opacity: 1 }
-                          : { width: '300px', opacity: 1, filter: 'blur(0px)' }
+                          : { width: '55%', opacity: 1, filter: 'blur(0px)' }
                       }
                       className={
                         isMobile
