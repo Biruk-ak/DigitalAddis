@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import { VelocityScroll } from '@/components/ui/velocity-scroll';
 import Image from 'next/image';
@@ -115,6 +115,76 @@ const countryFlags: Record<string, string> = {
   CA: '🇨🇦',
 };
 
+const BrandLogos = memo(() => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6 }}
+    className="mb-20 space-y-8 w-full"
+  >
+    {/* First Row - Scrolling Right */}
+    <div className="w-full">
+      <VelocityScroll default_velocity={0.8}>
+        <div className="flex gap-4">
+          {clients.map((client) => (
+            <div key={client.id} className="group flex-shrink-0">
+              <div className="relative w-44 h-32 lg:w-64 lg:h-40 flex items-center justify-center mx-3">
+                {/* Glow Effect on Hover */}
+                <div className="absolute inset-0 bg-[#ddfe00]/0 group-hover:bg-[#ddfe00]/10 rounded-xl blur-xl transition-all duration-300"></div>
+
+                {/* Card Container */}
+                <div className="relative w-full h-full border border-gray-800/50 rounded-xl flex items-center justify-center p-4 transition-all duration-300 group-hover:border-[#ddfe00]/50 group-hover:brightness-110">
+                  {/* Client Logo */}
+                  <Image
+                    src={client.logo}
+                    alt={client.name}
+                    fill
+                    className="object-contain p-1 relative z-10"
+                  />
+
+                  {/* Glow on Hover */}
+                  <div className="absolute inset-0 rounded-xl bg-[#ddfe00]/0 group-hover:bg-[#ddfe00]/5 transition-all duration-300 blur-sm"></div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </VelocityScroll>
+    </div>
+
+    {/* Second Row - Scrolling Left */}
+    <div className="w-full">
+      <VelocityScroll default_velocity={-0.8}>
+        <div className="flex gap-4">
+          {clients.map((client) => (
+            <div key={client.id} className="group flex-shrink-0">
+              <div className="relative w-44 h-32 lg:w-64 lg:h-40 flex items-center justify-center mx-3">
+                {/* Glow Effect on Hover */}
+                <div className="absolute inset-0 bg-[#ddfe00]/0 group-hover:bg-[#ddfe00]/10 rounded-xl blur-xl transition-all duration-300"></div>
+
+                {/* Card Container */}
+                <div className="relative w-full h-full border border-gray-800/50 rounded-xl flex items-center justify-center p-4 transition-all duration-300 group-hover:border-[#ddfe00]/50 group-hover:brightness-110">
+                  {/* Client Logo */}
+                  <Image
+                    src={client.logo}
+                    alt={client.name}
+                    fill
+                    className="object-contain p-1 relative z-10"
+                  />
+
+                  {/* Glow on Hover */}
+                  <div className="absolute inset-0 rounded-xl bg-[#ddfe00]/0 group-hover:bg-[#ddfe00]/5 transition-all duration-300 blur-sm"></div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </VelocityScroll>
+    </div>
+  </motion.div>
+));
+
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardsToShow, setCardsToShow] = useState(3);
@@ -170,73 +240,7 @@ export default function Testimonials() {
       </div>
 
       {/* Client Logos - VelocityScroll in 2 Rows - Full Width */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="mb-20 space-y-8 w-full"
-      >
-        {/* First Row - Scrolling Right */}
-        <div className="w-full">
-          <VelocityScroll default_velocity={0.8}>
-            <div className="flex gap-4">
-              {clients.map((client) => (
-                <div key={client.id} className="group flex-shrink-0">
-                  <div className="relative w-44 h-32 lg:w-64 lg:h-40 flex items-center justify-center mx-3">
-                    {/* Glow Effect on Hover */}
-                    <div className="absolute inset-0 bg-[#ddfe00]/0 group-hover:bg-[#ddfe00]/10 rounded-xl blur-xl transition-all duration-300"></div>
-
-                    {/* Card Container */}
-                    <div className="relative w-full h-full border border-gray-800/50 rounded-xl flex items-center justify-center p-4 transition-all duration-300 group-hover:border-[#ddfe00]/50 group-hover:brightness-110">
-                      {/* Client Logo */}
-                      <Image
-                        src={client.logo}
-                        alt={client.name}
-                        fill
-                        className="object-contain p-1 relative z-10"
-                      />
-
-                      {/* Glow on Hover */}
-                      <div className="absolute inset-0 rounded-xl bg-[#ddfe00]/0 group-hover:bg-[#ddfe00]/5 transition-all duration-300 blur-sm"></div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </VelocityScroll>
-        </div>
-
-        {/* Second Row - Scrolling Left */}
-        <div className="w-full">
-          <VelocityScroll default_velocity={-0.8}>
-            <div className="flex gap-4">
-              {clients.map((client) => (
-                <div key={client.id} className="group flex-shrink-0">
-                  <div className="relative w-44 h-32 lg:w-64 lg:h-40 flex items-center justify-center mx-3">
-                    {/* Glow Effect on Hover */}
-                    <div className="absolute inset-0 bg-[#ddfe00]/0 group-hover:bg-[#ddfe00]/10 rounded-xl blur-xl transition-all duration-300"></div>
-
-                    {/* Card Container */}
-                    <div className="relative w-full h-full border border-gray-800/50 rounded-xl flex items-center justify-center p-4 transition-all duration-300 group-hover:border-[#ddfe00]/50 group-hover:brightness-110">
-                      {/* Client Logo */}
-                      <Image
-                        src={client.logo}
-                        alt={client.name}
-                        fill
-                        className="object-contain p-1 relative z-10"
-                      />
-
-                      {/* Glow on Hover */}
-                      <div className="absolute inset-0 rounded-xl bg-[#ddfe00]/0 group-hover:bg-[#ddfe00]/5 transition-all duration-300 blur-sm"></div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </VelocityScroll>
-        </div>
-      </motion.div>
+      <BrandLogos />
 
       {/* Testimonials Section */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
