@@ -113,7 +113,7 @@ export default function Hero() {
               variants={textVariants}
               className="text-base sm:text-lg md:text-xl text-[#a0a0a0] max-w-xl mx-auto md:mx-0 leading-relaxed"
             >
-              A full-service digital agency delivering UI/UX design, web development, and branding that makes an impact.
+              Full-service digital solutions in cloud, development, branding, and technology — built for speed, scale, and real impact.
             </motion.p>
           </motion.div>
 
