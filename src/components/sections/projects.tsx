@@ -81,7 +81,7 @@ const projects: Card[] = [
 ];
 
 export default function Projects({ showViewMore = true }: ProjectsProps) {
-  const [selectedCard, setSelectedCard] = useState<number | null>(null);
+  const [selectedCard, setSelectedCard] = useState<number | null>(1);
   const [isMobile, setIsMobile] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -183,9 +183,8 @@ export default function Projects({ showViewMore = true }: ProjectsProps) {
                     ? { height: selectedCard === card.id ? '520px' : '260px' }
                     : { width: selectedCard === card.id ? '500px' : '200px' }
                 }
-                className={`relative mr-4 shrink-0 cursor-pointer overflow-hidden rounded-2xl border border-gray-800 bg-[#0f0f0f] shadow-lg ${
-                  isMobile ? 'w-[320px]' : 'h-[300px]'
-                }`}
+                className={`relative mr-4 shrink-0 cursor-pointer overflow-hidden rounded-2xl border border-gray-800 bg-[#0f0f0f] shadow-lg ${isMobile ? 'w-[320px]' : 'h-[300px]'
+                  }`}
                 data-card-id={card.id}
                 layout
                 onClick={() => handleCardClick(card.id)}
@@ -217,9 +216,8 @@ export default function Projects({ showViewMore = true }: ProjectsProps) {
                     <div className="flex items-center gap-2">
                       <button
                         aria-label="View more"
-                        className={`flex items-center justify-center rounded-full bg-black/30 backdrop-blur-sm transition-transform hover:scale-110 border border-white/20 ${
-                          isMobile ? 'h-10 w-10' : 'h-12 w-12'
-                        }`}
+                        className={`flex items-center justify-center rounded-full bg-black/30 backdrop-blur-sm transition-transform hover:scale-110 border border-white/20 ${isMobile ? 'h-10 w-10' : 'h-12 w-12'
+                          }`}
                         type="button"
                       >
                         {isMobile ? (
