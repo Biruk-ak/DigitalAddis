@@ -120,39 +120,36 @@ export default function Hero() {
           {/* Right Side - Circular Logo with Girl Image */}
           <motion.div
             variants={imageVariants}
-            className="flex-1 md:h-full flex items-start md:items-center justify-center relative order-1 md:order-2 mb-8 md:mb-0"
+            className="flex-1 md:h-full flex items-start md:items-center justify-center 2xl:pr-28 relative order-1 md:order-2 mb-8 md:mb-0"
           >
             {/* Soft neon glow behind logo */}
             <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-              <div className="w-[320px] sm:w-[380px] md:w-[440px] lg:w-[500px] h-[320px] sm:h-[380px] md:h-[440px] lg:h-[500px] bg-[#ddfe00] opacity-20 blur-[110px] rounded-full mix-blend-screen" />
+              <div className="w-[320px] sm:w-[380px] md:w-[440px] lg:w-[500px] 2xl:w-[650px] h-[320px] sm:h-[380px] md:h-[440px] lg:h-[500px] 2xl:h-[650px] bg-[#ddfe00] opacity-20 blur-[110px] rounded-full mix-blend-screen" />
             </div>
 
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.4 }}
-              className="relative"
-            >
-              <Link href="/contact" className="block relative">
+            <div className="relative">
+              <div className="block relative">
                 {/* Circular Logo Background */}
                 <div className="relative">
                   <CircularLogo size={221} className="md:hidden" />
                   <CircularLogo size={281} className="hidden md:block lg:hidden" />
-                  <CircularLogo size={341} className="hidden lg:block" />
+                  <CircularLogo size={341} className="hidden lg:block 2xl:hidden" />
+                  <CircularLogo size={500} className="hidden 2xl:block" />
 
                   {/* Girl Image - Positioned to align with Contact Button */}
-                  <div className="absolute top-[10%] md:top-[1%] -right-12 md:-right-32 lg:-right-40 flex items-end justify-end">
+                  <div className="absolute top-[10%] md:top-[1%] -right-12 md:-right-32 lg:-right-40 2xl:-right-44 flex items-end justify-end">
                     <img
                       src="/girl2.png"
                       alt="Digital Innovation"
-                      className="w-[140px] h-auto md:w-[250px] lg:w-[300px] object-contain drop-shadow-2xl"
+                      className="w-[140px] h-auto md:w-[250px] lg:w-[300px] 2xl:w-[450px] object-contain drop-shadow-2xl"
                     />
                   </div>
                 </div>
-              </Link>
-            </motion.div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </motion.div>
-    </section>
+    </section >
   );
 }

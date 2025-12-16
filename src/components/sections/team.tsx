@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 type TeamMember = {
   id: number;
@@ -83,22 +84,25 @@ export default function Team() {
   return (
     <section className="bg-[#0a0a0a] py-16 md:py-32 dark:bg-black">
       <div className="mx-auto max-w-7xl border-t border-gray-800 px-4 sm:px-6 lg:px-8">
-        <span className="text-xs text-gray-400 -ml-4 sm:-ml-6 lg:-ml-8 -mt-3.5 block w-max bg-[#0a0a0a] px-4 sm:px-6 lg:px-8 dark:bg-black">
-          Team
-        </span>
         <div className="mt-12 gap-4 sm:grid sm:grid-cols-2 md:mt-24">
-          <div className="sm:w-2/5">
-            <h2 className="text-3xl font-bold text-white sm:text-4xl">
+          <div className="flex flex-col gap-4">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white uppercase tracking-tight"
+            >
               Our dream team
-            </h2>
+            </motion.h2>
           </div>
-          <div className="mt-6 sm:mt-0">
+          {/* <div className="mt-6 sm:mt-0">
             <p className="text-gray-300">
               During the working process, we perform regular fitting with the
               client because he is the only person who can feel whether a new
               suit fits or not.
             </p>
-          </div>
+          </div> */}
         </div>
 
         <div className="mt-12 md:mt-24">

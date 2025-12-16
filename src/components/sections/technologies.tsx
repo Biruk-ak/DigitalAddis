@@ -9,8 +9,8 @@ interface Technology {
 
 const technologies: Technology[] = [
   // Row 1: Figma, Docker, PostgreSQL, Python, HTML, CSS
-  { 
-    name: 'Figma', 
+  {
+    name: 'Figma',
     icon: <Image src="/icon/figma.png" alt="Figma" width={80} height={80} className="object-contain" />
   },
   // { 
@@ -21,55 +21,55 @@ const technologies: Technology[] = [
   //     </div>
   //   )
   // },
-  { 
-    name: 'Docker', 
+  {
+    name: 'Docker',
     icon: <Image src="/icon/docker.png" alt="Docker" width={80} height={80} className="object-contain" />
   },
-  { 
-    name: 'PostgreSQL', 
+  {
+    name: 'PostgreSQL',
     icon: <Image src="/icon/postgre.png" alt="PostgreSQL" width={80} height={80} className="object-contain" />
   },
-  { 
-    name: 'Python', 
+  {
+    name: 'Python',
     icon: <Image src="/icon/python.png" alt="Python" width={80} height={80} className="object-contain" />
   },
-  { 
-    name: 'HTML', 
+  {
+    name: 'HTML',
     icon: <Image src="/icon/html.png" alt="HTML" width={80} height={80} className="object-contain" />
   },
-  { 
-    name: 'CSS', 
+  {
+    name: 'CSS',
     icon: <Image src="/icon/css-3.png" alt="CSS" width={80} height={80} className="object-contain" />
   },
   // Row 2: Tailwind CSS, Bootstrap, JavaScript, TypeScript, React, Next.js
-  { 
-    name: 'Tailwind CSS', 
+  {
+    name: 'Tailwind CSS',
     icon: (
       <div className="w-20 h-20 flex items-center justify-center">
         <svg viewBox="0 0 54 33" className="w-16 h-12 text-cyan-400 fill-current">
-          <path d="M27 0c-7.2 0-11.7 3.6-13.5 10.8 2.7-3.6 5.85-4.95 9.45-4.05 2.054.514 3.522 2.004 5.147 3.653C30.744 13.09 33.808 16.2 40.5 16.2c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.514-3.522-2.004-5.147-3.653C36.756 3.11 33.692 0 27 0zM13.5 16.2C6.3 16.2 1.8 19.8 0 27c2.7-3.6 5.85-4.95 9.45-4.05 2.054.514 3.522 2.004 5.147 3.653C17.244 29.29 20.308 32.4 27 32.4c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.514-3.522-2.004-5.147-3.653C23.256 19.31 20.192 16.2 13.5 16.2z"/>
+          <path d="M27 0c-7.2 0-11.7 3.6-13.5 10.8 2.7-3.6 5.85-4.95 9.45-4.05 2.054.514 3.522 2.004 5.147 3.653C30.744 13.09 33.808 16.2 40.5 16.2c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.514-3.522-2.004-5.147-3.653C36.756 3.11 33.692 0 27 0zM13.5 16.2C6.3 16.2 1.8 19.8 0 27c2.7-3.6 5.85-4.95 9.45-4.05 2.054.514 3.522 2.004 5.147 3.653C17.244 29.29 20.308 32.4 27 32.4c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.514-3.522-2.004-5.147-3.653C23.256 19.31 20.192 16.2 13.5 16.2z" />
         </svg>
       </div>
     )
   },
-  { 
-    name: 'Bootstrap', 
+  {
+    name: 'Bootstrap',
     icon: <Image src="/icon/bootstrap.png" alt="Bootstrap" width={80} height={80} className="object-contain" />
   },
-  { 
-    name: 'JavaScript', 
+  {
+    name: 'JavaScript',
     icon: <Image src="/icon/js.png" alt="JavaScript" width={80} height={80} className="object-contain" />
   },
-  { 
-    name: 'TypeScript', 
+  {
+    name: 'TypeScript',
     icon: <Image src="/icon/typescript.png" alt="TypeScript" width={80} height={80} className="object-contain" />
   },
-  { 
-    name: 'React', 
+  {
+    name: 'React',
     icon: <Image src="/icon/reactjs.png" alt="React" width={80} height={80} className="object-contain" />
   },
-  { 
-    name: 'Next.js', 
+  {
+    name: 'Next.js',
     icon: (
       <div className="w-20 h-20 bg-black rounded-full flex items-center justify-center border-2 border-white">
         <span className="text-white font-bold text-3xl">N</span>
@@ -77,40 +77,40 @@ const technologies: Technology[] = [
     )
   },
   // Row 3: Expo, React Native, Node.js, Express.js, NestJS, Prisma
-  { 
-    name: 'Expo', 
+  {
+    name: 'Expo',
     icon: (
       <div className="w-20 h-20 bg-black rounded-full flex items-center justify-center">
         <span className="text-white font-bold text-3xl">E</span>
       </div>
     )
   },
-  { 
-    name: 'React Native', 
+  {
+    name: 'React Native',
     icon: <Image src="/icon/reactjs.png" alt="React Native" width={80} height={80} className="object-contain" />
   },
-  { 
-    name: 'Node.js', 
+  {
+    name: 'Node.js',
     icon: <Image src="/icon/nodejs.png" alt="Node.js" width={80} height={80} className="object-contain" />
   },
-  { 
-    name: 'GraphQL', 
+  {
+    name: 'GraphQL',
     icon: <Image src="/icon/graphql.png" alt="GraphQL" width={80} height={80} className="object-contain" />
   },
-  { 
-    name: 'NestJS', 
+  {
+    name: 'NestJS',
     icon: (
       <div className="w-20 h-20 flex items-center justify-center">
         <span className="text-red-500 font-bold text-4xl">N</span>
       </div>
     )
   },
-  { 
-    name: 'Prisma', 
+  {
+    name: 'Prisma',
     icon: (
       <div className="w-20 h-20 flex items-center justify-center">
         <svg viewBox="0 0 24 24" className="w-16 h-16 fill-current text-cyan-400">
-          <path d="M21.807 18.285L13.553.756a1.324 1.324 0 00-1.129-.754 1.31 1.31 0 00-1.206.626l-8.952 14.5a1.356 1.356 0 00.016 1.455l4.376 6.778a1.408 1.408 0 001.58.581l12.703-3.757c.389-.115.707-.39.873-.755s.164-.783-.007-1.145zm-1.848.752L9.18 22.224a.452.452 0 01-.575-.52l3.85-18.438c.072-.345.549-.4.699-.08l7.129 15.138a.515.515 0 01-.324.713z"/>
+          <path d="M21.807 18.285L13.553.756a1.324 1.324 0 00-1.129-.754 1.31 1.31 0 00-1.206.626l-8.952 14.5a1.356 1.356 0 00.016 1.455l4.376 6.778a1.408 1.408 0 001.58.581l12.703-3.757c.389-.115.707-.39.873-.755s.164-.783-.007-1.145zm-1.848.752L9.18 22.224a.452.452 0 01-.575-.52l3.85-18.438c.072-.345.549-.4.699-.08l7.129 15.138a.515.515 0 01-.324.713z" />
         </svg>
       </div>
     )
@@ -162,7 +162,7 @@ export default function Technologies() {
                 THE TECHNOLOGY WE USE
               </span>
             </div>
-            
+
             {/* Main Heading */}
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -176,11 +176,11 @@ export default function Technologies() {
           </div>
 
           {/* Right Side - Descriptive Text */}
-          <div className="lg:max-w-md">
+          {/* <div className="lg:max-w-md">
             <p className="text-sm lg:text-base text-gray-300 leading-relaxed">
               We build powerful applications using Node.js, Prisma, MongoDB, PostgreSQL, MySQL, Next.js, React, React Native, Redux, and TailwindCSS, backed by reliable VPS, Shared, and Cloud Hosting.
             </p>
-          </div>
+          </div> */}
         </motion.div>
 
         {/* Technologies Grid - 6 columns on desktop, 3 on tablet, 2 on mobile - No gaps, boxes touching */}
@@ -198,16 +198,15 @@ export default function Technologies() {
               <motion.div
                 key={index}
                 variants={cardVariants}
-                className={`group relative bg-[#1a1a1a] dark:bg-[#0f0f0f] p-4 lg:p-6 border-r border-b border-gray-800 transition-all duration-300 overflow-visible ${
-                  isLastInRow ? 'lg:border-r-0' : ''
-                } ${isInLastRow ? 'border-b-0' : ''}`}
+                className={`group relative bg-[#1a1a1a] dark:bg-[#0f0f0f] p-4 lg:p-6 border-r border-b border-gray-800 transition-all duration-300 overflow-visible ${isLastInRow ? 'lg:border-r-0' : ''
+                  } ${isInLastRow ? 'border-b-0' : ''}`}
                 style={{
                   boxShadow: 'none',
                 }}
               >
                 {/* Glow overlay on hover - ensures full rounded glow on all sides */}
-                <div 
-                  className="absolute inset-0 border border-[#ddfe00] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" 
+                <div
+                  className="absolute inset-0 border border-[#ddfe00] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                   style={{
                     boxShadow: '0 0 20px rgba(221, 254, 0, 0.5), 0 0 40px rgba(221, 254, 0, 0.3), 0 0 60px rgba(221, 254, 0, 0.1)',
                     margin: '-1px',
