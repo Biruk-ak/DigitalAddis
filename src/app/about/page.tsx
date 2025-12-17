@@ -40,7 +40,7 @@ export default function AboutPage() {
                 <div className="absolute -inset-4 bg-gradient-to-r from-[#ddfe00]/20 to-[#ddfe00]/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative h-[300px] lg:h-[400px] w-full rounded-2xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/about/1.jpg"
+                    src="/about/da1.jpg"
                     alt="Digital Addis Technology Concept"
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -65,7 +65,7 @@ export default function AboutPage() {
                 <div className="absolute -inset-4 bg-gradient-to-l from-[#ddfe00]/20 to-[#ddfe00]/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative h-[300px] lg:h-[400px] w-full rounded-2xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/about/2.jpg"
+                    src="/about/da2.jpg"
                     alt="Partnership and Trust"
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -80,7 +80,7 @@ export default function AboutPage() {
                 <div className="absolute -inset-4 bg-gradient-to-r from-[#ddfe00]/20 to-[#ddfe00]/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative h-[300px] lg:h-[400px] w-full rounded-2xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/about/3.jpg"
+                    src="/about/da3.jpg"
                     alt="Collaboration and Listening"
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -105,7 +105,7 @@ export default function AboutPage() {
                 <div className="absolute -inset-4 bg-gradient-to-l from-[#ddfe00]/20 to-[#ddfe00]/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative h-[300px] lg:h-[400px] w-full rounded-2xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/about/4.jpg"
+                    src="/about/da4.jpg"
                     alt="Future Vision"
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"

@@ -23,12 +23,12 @@ const post = {
     content: [
         {
             type: 'heading',
-            text: '1. Too Many Questions',
+            text: '1. Why Everyone Is Talking About Vibe Coding',
             id: 'too-many-questions'
         },
         {
             type: 'paragraph',
-            text: 'One of the most common mistakes in signup forms is asking for too much information upfront. Every additional field increases friction and the likelihood of users dropping off. Only ask for what is absolutely essential to get the user started. You can always collect more profile information later.'
+            text: ' If you’ve spent any time around developers or tech Twitter lately, you’ve probably heard the phrase “vibe coding.” At first, it sounds like a joke coding based on vibes? But it’s real and it’s changing how people build software. Vibe coding is about working with AI in a more natural, creative way, focusing on ideas instead of syntax. Instead of stressing over every line of code, you describe what you want and the AI helps bring it to life.'
         },
         {
             type: 'image',
@@ -37,26 +37,26 @@ const post = {
         },
         {
             type: 'heading',
-            text: '2. Bad Mobile Responsive UI',
-            id: 'bad-mobile-ui'
+            text: '2. What Is Vibe Coding',
+            id: 'What Is Vibe Coding'
         },
         {
             type: 'paragraph',
-            text: 'With over 50% of web traffic coming from mobile devices, a non-responsive signup page is a conversion killer. Ensure your input fields are easily tappable, fonts are legible without zooming, and the layout adapts seamlessly to smaller screens.'
+            text: 'Vibe coding means telling an AI what you want to build in plain language, then letting it generate the code for you. For example, instead of writing everything manually, you might say: “Create a landing page with a signup form and a modern design.” The AI responds with real, usable code. You’re not copying and pasting blindly, you guide, adjust and refine. Think of it as collaborating with an AI developer who works fast but still '
         },
         {
             type: 'heading',
-            text: '3. Unclear Value Proposition',
-            id: 'unclear-message'
+            text: '3. How Vibe Coding Actually Works',
+            id: 'How Vibe Coding Actually Works'
         },
         {
             type: 'paragraph',
-            text: 'Users need to know *why* they should sign up. If your value proposition isn\'t clear and compelling right next to the signup form, they might hesitate. Remind them of the benefits they\'ll unlock immediately after registering.'
+            text: `from the follwowing .`
         },
         {
             type: 'heading',
-            text: '4. Ignoring Loading States',
-            id: 'ignoring-loading'
+            text: '4. Why Developers Love It Faster Results',
+            id: 'Why Developers Love It Faster Results'
         },
         {
             type: 'paragraph',
@@ -64,10 +64,10 @@ const post = {
         }
     ],
     tableOfContents: [
-        { id: 'too-many-questions', title: '1. Too Many Questions' },
-        { id: 'bad-mobile-ui', title: '2. Bad Mobile Responsive UI' },
-        { id: 'unclear-message', title: '3. Unclear Message' },
-        { id: 'ignoring-loading', title: '4. Ignoring Loading States' },
+        { id: 'Why Everyone Is Talking About Vibe Coding', title: '1. Why Everyone Is Talking About Vibe Coding' },
+        { id: 'What Is Vibe Coding', title: '2. What Is Vibe Coding ' },
+        { id: 'How Vibe Coding Actually Works', title: '3. How Vibe Coding Actually Works' },
+        { id: 'Why Developers Love It Faster Results', title: '4. Why Developers Love It Faster Results' },
     ]
 };
 

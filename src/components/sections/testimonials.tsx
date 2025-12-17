@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect, memo } from 'react';
-import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Star, Building2 } from 'lucide-react';
 import { VelocityScroll } from '@/components/ui/velocity-scroll';
 import Image from 'next/image';
 
@@ -19,8 +19,7 @@ interface Testimonial {
   id: number;
   name: string;
   avatar: string;
-  country: string;
-  countryCode: string;
+  company: string;
   review: string;
   rating: number;
 }
@@ -43,77 +42,59 @@ const clients: Client[] = [
   { id: 15, name: "Kaldi's Coffee", logo: '/brands/kaldi\'s.png' },
   { id: 16, name: 'NBC', logo: '/brands/nbc.png' },
   { id: 17, name: 'fdre', logo: '/brands/fdre.png' },
-  { id: 18, name: 'foreign minister', logo: '/brands/foreign minister.png' },
-  { id: 19, name: 'signature', logo: '/brands/signature.png' },
-  { id: 20, name: 'signature f', logo: '/brands/signature f.png' },
+  { id: 18, name: 'signature', logo: '/brands/signature.png' },
 ];
 
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: 'Farhad Aliyev',
-    avatar: 'https://ui-avatars.com/api/?name=Farhad+Aliyev&background=ddfe00&color=000000&size=128',
-    country: 'Azerbaijan',
-    countryCode: 'AZ',
-    review: 'I am very pleased with the design work done for our WMS system. The seller understood the requirements perfectly and delivered a clean, intuitive interface. Communication was smooth throughout the project, and the final result exceeded my expectations.',
+    name: 'Pastor Dr Yonas Badi',
+    avatar: '/testimonials/yonas.jpg',
+    company: 'Mercy Life University',
+    review: 'Digital Addis created a website that truly reflects the mission and values of Mercy Life University. The design is clear, elegant, and purposeful, making our online presence both professional and welcoming. The process was smooth, and the final result exceeded our expectations.',
     rating: 5.0,
   },
   {
     id: 2,
-    name: 'Badarmunir',
-    avatar: 'https://ui-avatars.com/api/?name=Badarmunir&background=ddfe00&color=000000&size=128',
-    country: 'Pakistan',
-    countryCode: 'PK',
-    review: 'It was a pleasure working with this team. They quickly grasped the project requirements and delivered exceptional results. Their keen eye for detail and professional wireframes made the entire process smooth. They were also very accommodating with revisions.',
+    name: 'Biniyam Tefaye',
+    avatar: '/testimonials/ben.jpg',
+    company: 'Signature Fitness',
+    review: 'Digital Addis delivered an experience that truly reflects the level of quality we aim to offer at Signature Fitness. From the website to the overall marketing direction, every detail felt intentional, elegant, and aligned with our brand. Their team was attentive, thoughtful, and a pleasure to work with. We are very proud of the final result and highly recommend Digital Addis. ',
     rating: 5.0,
   },
   {
     id: 3,
-    name: 'Jaimyvang',
-    avatar: 'https://ui-avatars.com/api/?name=Jaimyvang&background=ddfe00&color=000000&size=128',
-    country: 'Belgium',
-    countryCode: 'BE',
-    review: 'Abdul Karim and his team did an outstanding job on our app design. Their attention to detail, creativity, and professionalism is unmatched. The communication was proactive, and they truly understood our vision. Highly recommended!',
+    name: 'Ambassor Fitsum Aregawi',
+    avatar: '/testimonials/ambassador.jpg',
+    company: 'EDS',
+    review: 'Digital Addis delivered a complete branding identity that truly reflects our mission and values. From the visual direction to the overall brand feel, everything was cohesive, professional, and thoughtfully executed. Their team took the time to understand our purpose and translated it into a brand that feels trustworthy and impactful.',
     rating: 5.0,
   },
   {
     id: 4,
-    name: 'Sarah Williams',
-    avatar: 'https://ui-avatars.com/api/?name=Sarah+Williams&background=ddfe00&color=000000&size=128',
-    country: 'United States',
-    countryCode: 'US',
-    review: 'Outstanding work! They transformed our digital presence and increased our engagement by 300%. The team was professional, creative, and results-driven. Best digital agency we\'ve worked with.',
+    name: 'Liya Golomt',
+    avatar: '/testimonials/liya_gole.jpg',
+    company: 'LMS',
+    review: 'Digital Addis brought a new level of sophistication to our social media presence. Their understanding of the beauty industry, combined with a clear and strategic digital approach, allowed IMS to communicate its standards and artistry effortlessly online. Every detail felt considered and on-brand.',
     rating: 5.0,
   },
   {
     id: 5,
-    name: 'Michael Brown',
-    avatar: 'https://ui-avatars.com/api/?name=Michael+Brown&background=ddfe00&color=000000&size=128',
-    country: 'United Kingdom',
-    countryCode: 'GB',
-    review: 'Their expertise in web development and design is unmatched. The project was delivered on time and exceeded all expectations. The team was responsive and made the entire process seamless.',
+    name: 'Dr. Hassen Hussien',
+    avatar: '/testimonials/gedabank.jpg',
+    company: 'Gaddaa Bank',
+    review: 'Digital Addis has played a pivotal role in enhancing Gaddaa Bank’s digital presence. Their strategic approach to digital marketing has been thoughtful, precise, and highly effective in communicating our brand values to a wider audience. We appreciate their professionalism, expertise, and commitment to delivering impactful results, and we confidently recommend Digital Addis to any organization seeking to strengthen its digital footprint.',
     rating: 5.0,
   },
   {
     id: 6,
-    name: 'Emma Johnson',
-    avatar: 'https://ui-avatars.com/api/?name=Emma+Johnson&background=ddfe00&color=000000&size=128',
-    country: 'Canada',
-    countryCode: 'CA',
-    review: 'Working with DigitalAddis was a game-changer for our business. They understood our needs from day one and delivered a solution that perfectly aligned with our goals. The attention to detail and customer service was exceptional.',
+    name: 'Dr. Aklilu Wubet',
+    avatar: '/testimonials/wegagen.jpg',
+    company: 'Wegagen Bank',
+    review: 'Wegagen Bank has experienced a significant enhancement in its online presence and engagement with its audience. The team at Digital Addis demonstrated exceptional expertise, creativity, and professionalism, ensuring that every initiative aligned seamlessly with our brand values. We are extremely satisfied with the results and confidently recommend Digital Addis to any organization seeking high-quality, impactful solutions to strengthen their brand.',
     rating: 5.0,
   },
 ];
-
-// Country flag emoji mapping
-const countryFlags: Record<string, string> = {
-  AZ: '🇦🇿',
-  PK: '🇵🇰',
-  BE: '🇧🇪',
-  US: '🇺🇸',
-  GB: '🇬🇧',
-  CA: '🇨🇦',
-};
 
 const BrandLogos = memo(() => (
   <motion.div
@@ -231,13 +212,7 @@ export default function Testimonials() {
 
   return (
     <section className="relative py-20 lg:py-32 bg-[#0b0b0b] overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Top Glow Line */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#ddfe00] to-transparent opacity-30"></div>
-        {/* Bottom Glow Line */}
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#ddfe00] to-transparent opacity-30"></div>
-      </div>
+
 
       {/* Client Logos - VelocityScroll in 2 Rows - Full Width */}
       <BrandLogos />
@@ -260,9 +235,11 @@ export default function Testimonials() {
             className="relative hidden lg:block w-[25%] lg:w-[30%] flex-shrink-0 flex"
           >
             {/* Image Container - Enlarged */}
-            <div className="relative w-full h-full flex flex-col">
+            <div className="relative w-full h-full flex flex-col justify-center">
+
+
               {/* Neon Blurred Glow Behind Image */}
-              <div className="absolute inset-0 -z-10 flex items-center justify-center">
+              <div className="absolute inset-0 z-0 flex items-center justify-center">
                 <div
                   className="w-[80%] h-[80%] rounded-full opacity-40 blur-3xl"
                   style={{
@@ -271,11 +248,11 @@ export default function Testimonials() {
                 />
               </div>
 
-              <div className="relative w-full h-full z-10">
+              <div className="relative w-full h-[100%] z-10">
                 <img
                   src="/aman.png"
                   alt="CEO"
-                  className="w-full h-full object-contain object-left scale-125"
+                  className="w-full h-full object-contain object-left"
                 />
               </div>
             </div>
@@ -395,8 +372,8 @@ export default function Testimonials() {
                                 {testimonial.name}
                               </h4>
                               <div className="flex items-center gap-2">
-                                <span className="text-lg">{countryFlags[testimonial.countryCode] || '🌍'}</span>
-                                <span className="text-gray-400 text-xs">{testimonial.country}</span>
+                                <Building2 size={16} className="text-[#ddfe00]" />
+                                <span className="text-gray-400 text-xs font-medium uppercase tracking-wider">{testimonial.company}</span>
                               </div>
                             </div>
                           </div>

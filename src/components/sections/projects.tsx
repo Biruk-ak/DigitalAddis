@@ -12,73 +12,11 @@ const EASING_X2 = 0.2;
 const EASING_Y2 = 1;
 const smoothEasing: [number, number, number, number] = [EASING_X1, EASING_Y1, EASING_X2, EASING_Y2];
 
-export type Card = {
-  id: number;
-  title: string;
-  image: string;
-  content: string;
-  categories?: string[];
-  author?: {
-    name: string;
-    role: string;
-    image: string;
-  };
-};
+import { projects, type Project as Card } from '@/lib/projects';
 
 interface ProjectsProps {
   showViewMore?: boolean;
 }
-
-const projects: Card[] = [
-  {
-    id: 1,
-    title: 'Student Diwan',
-    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop',
-    content: 'An all-in-one school management system designed to simplify educational operations. Simple, fast, and organized.',
-    categories: ['LMS', 'FULL-STACK-DEV', 'UI/UX'],
-    author: {
-      name: 'DigitalAddis Team',
-      role: 'Development Team',
-      image: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop',
-    },
-  },
-  {
-    id: 2,
-    title: 'Woepedia Village',
-    image: '/projectimage/signature2.jpg',
-    content: 'Connect, ask, and discover tribal insights through this innovative platform. Explore village stories and cultural heritage.',
-    categories: ['MOBILE-APP', 'UI/UX', 'APP-DESIGN'],
-    author: {
-      name: 'DigitalAddis Team',
-      role: 'Design Team',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop',
-    },
-  },
-  {
-    id: 3,
-    title: 'Skill Platform',
-    image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&h=600&fit=crop',
-    content: 'Upgrade yourself today. Learn what matters, learn it fast. A comprehensive learning platform for skill development.',
-    categories: ['WEBSITE-UI', 'UI/UX', 'FULL-STACK-DEVELOPMENT'],
-    author: {
-      name: 'DigitalAddis Team',
-      role: 'Product Team',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop',
-    },
-  },
-  {
-    id: 4,
-    title: 'TKOD Finance',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
-    content: 'Be your own financial advisor. Smarter spending, better financial management. Take control of your finances with intelligent tools.',
-    categories: ['MOBILE-APP', 'FINTECH', 'UI/UX'],
-    author: {
-      name: 'DigitalAddis Team',
-      role: 'Development Team',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop',
-    },
-  },
-];
 
 export default function Projects({ showViewMore = true }: ProjectsProps) {
   const [selectedCard, setSelectedCard] = useState<number | null>(1);
@@ -209,18 +147,19 @@ export default function Projects({ showViewMore = true }: ProjectsProps) {
                   <div className={`absolute inset-0 flex flex-col justify-between text-white ${isMobile ? 'p-4' : 'p-6'}`}>
                     <h2 className={`font-bold ${isMobile ? 'text-lg' : 'text-2xl'}`}>{card.title}</h2>
                     <div className="flex items-center gap-2">
-                      <button
+                      <Link
+                        href={`/projects/${card.slug}`}
+                        onClick={(e) => e.stopPropagation()}
                         aria-label="View more"
                         className={`flex items-center justify-center rounded-full bg-black/30 backdrop-blur-sm transition-transform hover:scale-110 border border-white/20 ${isMobile ? 'h-10 w-10' : 'h-12 w-12'
                           }`}
-                        type="button"
                       >
                         {isMobile ? (
-                          <ChevronDown className="text-white h-5 w-5" />
+                          <ChevronDown className="text-white h-5 w-5 -rotate-90" />
                         ) : (
                           <ChevronRight className="text-white h-6 w-6" />
                         )}
-                      </button>
+                      </Link>
                       <span className={`font-medium ${isMobile ? 'text-xs' : 'text-sm'}`}>View more</span>
                     </div>
                   </div>
