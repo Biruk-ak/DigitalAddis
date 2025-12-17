@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'About Us - DigitalAddis Digital Agency',
@@ -27,6 +28,90 @@ export default function AboutPage() {
             <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
               A full-service digital agency delivering innovative solutions
             </p>
+          </div>
+
+          {/* Company Story */}
+          <div className="max-w-7xl mx-auto mb-16 lg:mb-32 space-y-20 lg:space-y-32">
+
+            {/* Block 1: Image Left, Text Right */}
+            <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+              <div className="w-full lg:w-1/2 relative group">
+                <div className="absolute -inset-4 bg-gradient-to-r from-[#ddfe00]/20 to-[#ddfe00]/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative h-[300px] lg:h-[400px] w-full rounded-2xl overflow-hidden shadow-2xl">
+                  <Image
+                    src="/about/1.jpg"
+                    alt="Digital Addis Technology Concept"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+              </div>
+              <div className="w-full lg:w-1/2">
+                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                  Digital Addis (DA) was built with a simple idea in mind: technology should make people’s work easier, safer and more meaningful. For over a decade, we have been working closely with banks, government institutions, international organizations, NGOs, healthcare providers, telecom operators, manufacturers, real estate developers, hotels and logistics companies to help them solve real, everyday challenges using technology.
+                </p>
+              </div>
+            </div>
+
+            {/* Block 2: Text Left, Image Right */}
+            <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
+              <div className="w-full lg:w-1/2">
+                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                  Our experience across many industries has shown us that successful digital solutions are not just about advanced systems they are about understanding people, processes and local realities. As a registered Limited Liability Company in both Ethiopia and the United States, and an officially listed Dun & Bradstreet partner, we operate with trust, transparency and a long term commitment to every organization we serve.
+                </p>
+              </div>
+              <div className="w-full lg:w-1/2 relative group">
+                <div className="absolute -inset-4 bg-gradient-to-l from-[#ddfe00]/20 to-[#ddfe00]/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative h-[300px] lg:h-[400px] w-full rounded-2xl overflow-hidden shadow-2xl">
+                  <Image
+                    src="/about/2.jpg"
+                    alt="Partnership and Trust"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Block 3: Image Left, Text Right */}
+            <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+              <div className="w-full lg:w-1/2 relative group">
+                <div className="absolute -inset-4 bg-gradient-to-r from-[#ddfe00]/20 to-[#ddfe00]/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative h-[300px] lg:h-[400px] w-full rounded-2xl overflow-hidden shadow-2xl">
+                  <Image
+                    src="/about/3.jpg"
+                    alt="Collaboration and Listening"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+              </div>
+              <div className="w-full lg:w-1/2">
+                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                  At DA, we believe the best solutions come from strong relationships and open conversations. We take the time to listen, ask the right questions, and truly understand our clients goals before we start building. Our work ranges from custom software development and cybersecurity to cloud services, smart devices and infrastructure, digital consulting and skills training but at the core of everything we do is people.
+                </p>
+              </div>
+            </div>
+
+            {/* Block 4: Text Left, Image Right */}
+            <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
+              <div className="w-full lg:w-1/2">
+                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                  We design systems that are secure, scalable and easy to use and we make sure the teams behind them feel confident and supported long after deployment. Guided by innovation, excellence, and integrity, we focus on long term partnerships rather than one time projects. Our purpose is to help organizations grow, adapt and move forward with confidence, while contributing to a stronger, more inclusive and sustainable digital future for the communities we are part of.
+                </p>
+              </div>
+              <div className="w-full lg:w-1/2 relative group">
+                <div className="absolute -inset-4 bg-gradient-to-l from-[#ddfe00]/20 to-[#ddfe00]/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative h-[300px] lg:h-[400px] w-full rounded-2xl overflow-hidden shadow-2xl">
+                  <Image
+                    src="/about/4.jpg"
+                    alt="Future Vision"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Content Grid */}
