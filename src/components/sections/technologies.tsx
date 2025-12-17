@@ -141,7 +141,7 @@ export default function Technologies() {
   };
 
   return (
-    <section className="relative py-20 lg:py-32 bg-[#0a0a0a] dark:bg-black overflow-hidden">
+    <section className="relative pt-20 pb-8 lg:pt-32 lg:pb-12 bg-[#0a0a0a] dark:bg-black overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div

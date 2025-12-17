@@ -82,7 +82,7 @@ export default function Services({ showViewMore = true }: ServicesProps) {
   };
 
   return (
-    <section className="relative py-20 lg:py-32 bg-[#0a0a0a] dark:bg-black overflow-hidden">
+    <section className="relative pt-20 pb-8 lg:pt-32 lg:pb-12 bg-[#0a0a0a] dark:bg-black overflow-hidden">
       {/* Grid Pattern - Continuation from Hero section */}
       <div
         className="absolute top-0 left-0 right-0 h-64"
@@ -97,7 +97,7 @@ export default function Services({ showViewMore = true }: ServicesProps) {
           WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)',
         }}
       />
-      
+
       {/* Secondary grid layer */}
       <div
         className="absolute top-0 left-0 right-0 h-64"

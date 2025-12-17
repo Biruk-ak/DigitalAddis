@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import { Lightbulb, Award, Shield } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'About Us - DigitalAddis Digital Agency',
@@ -155,28 +156,44 @@ export default function AboutPage() {
                   title: 'Innovation',
                   description:
                     'We push boundaries to deliver modern, future focused solutions.',
+                  Icon: Lightbulb,
                 },
                 {
                   title: 'Excellence',
                   description:
                     'We commit to quality, reliability and high impact results',
+                  Icon: Award,
                 },
                 {
                   title: 'Integrity',
                   description:
                     'We operate with transparency, trust and responsibility in everything we do.',
+                  Icon: Shield,
                 },
               ].map((value, index) => (
                 <div
                   key={index}
-                  className="bg-white dark:bg-gradient-to-br dark:from-gray-900/90 dark:to-black/90 rounded-2xl border border-gray-200 dark:border-gray-800 p-8 transition-all duration-300 hover:border-[#ddfe00] hover:shadow-xl hover:shadow-[#ddfe00]/10 dark:hover:shadow-[#ddfe00]/20"
+                  className="group relative bg-gray-50 dark:bg-zinc-900 p-8 rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#ddfe00]/20 border border-transparent dark:border-zinc-800 dark:hover:border-[#ddfe00]/50"
+                  style={{
+                    boxShadow: '0 0 1px rgba(0,0,0,0.1)'
+                  }}
                 >
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-                    {value.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    {value.description}
-                  </p>
+                  <div className="absolute top-0 right-0 p-8 opacity-5 dark:opacity-10 group-hover:opacity-20 transition-opacity duration-300 transform scale-150 group-hover:rotate-12">
+                    <value.Icon size={120} className="text-gray-900 dark:text-[#ddfe00]" />
+                  </div>
+
+                  <div className="relative z-10 flex flex-col h-full">
+                    <div className="w-14 h-14 bg-white dark:bg-black rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300 border border-gray-100 dark:border-zinc-800">
+                      <value.Icon className="w-7 h-7 text-gray-900 dark:text-[#ddfe00]" />
+                    </div>
+
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                      {value.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                      {value.description}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>

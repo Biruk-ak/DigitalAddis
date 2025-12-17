@@ -45,7 +45,7 @@ const projects: Card[] = [
   {
     id: 2,
     title: 'Woepedia Village',
-    image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop',
+    image: '/projectimage/signature2.jpg',
     content: 'Connect, ask, and discover tribal insights through this innovative platform. Explore village stories and cultural heritage.',
     categories: ['MOBILE-APP', 'UI/UX', 'APP-DESIGN'],
     author: {
@@ -115,7 +115,7 @@ export default function Projects({ showViewMore = true }: ProjectsProps) {
   };
 
   return (
-    <section className="relative py-20 lg:py-32 bg-[#0a0a0a] dark:bg-black overflow-hidden">
+    <section className="relative pt-20 pb-8 lg:pt-32 lg:pb-12 bg-[#0a0a0a] dark:bg-black overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
